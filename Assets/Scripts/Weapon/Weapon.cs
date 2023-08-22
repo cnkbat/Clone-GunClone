@@ -1,0 +1,117 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+public class Weapon : MonoBehaviour
+{
+    [Header("Bullet")]
+    [SerializeField] GameObject bullet;
+
+    [Header("Attributes")]
+    [SerializeField] Transform tipOfWeapon;
+
+    [Header("Firing")]
+    [SerializeField] float firedRotationDelay = 0.2f, resetRotationDelay = 0.8f;
+    public bool doubleShotActive;
+    
+    [SerializeField] Vector3 fireEndRotationValue = new Vector3(315,0,0);
+    [SerializeField] Vector3 originalRotationValue;
+
+    [Header("Attributes")]
+    [SerializeField] float fireRange;
+    [SerializeField] float fireRate;
+    private float currentFireRate;
+    public float damage;
+
+    [Header("VFX")]
+    [SerializeField] GameObject muzzleFlashVFX;
+
+    [SerializeField] GameObject ownerSelector;
+    private void Start() 
+    {   
+        tag = "Weapon";
+        if(transform.parent.tag == "WeaponSelector")
+        {
+            ownerSelector = transform.parent.gameObject;
+        }
+    }
+
+    private void ResetPos()
+    {
+        transform.DORotate(originalRotationValue,resetRotationDelay,RotateMode.Fast);
+    }
+    
+    private void Update() 
+    {
+        if(!GameManager.instance.gameHasStarted) return;
+        if(GameManager.instance.gameHasEnded) return;
+        if(GameManager.instance.upgradePhase) return;
+        
+        if(Player.instance.knockbacked)
+        {
+            UpdateFireRate();
+            return;
+        }
+
+        currentFireRate -= Time.deltaTime;
+        
+            if(currentFireRate <= 0)
+            {
+                FireBullet();
+                UpdateFireRate();
+            }
+    }
+
+    public void FireBullet()
+    {
+        if(muzzleFlashVFX != null)
+        {
+            muzzleFlashVFX.SetActive(true);
+        }
+
+        transform.DORotate(fireEndRotationValue,firedRotationDelay,RotateMode.Fast).
+            OnComplete(ResetPos);
+            
+        if(!doubleShotActive)
+        {
+            GameObject firedBullet = Instantiate(bullet, tipOfWeapon.position ,Quaternion.identity);
+        
+            firedBullet.GetComponent<Bullet>().firedPoint = tipOfWeapon;
+            firedBullet.GetComponent<Bullet>().SetRelatedWeapon(gameObject);
+        }
+        else if(doubleShotActive)
+        {
+            GameObject firstfiredBullet = Instantiate(bullet, tipOfWeapon.position ,Quaternion.identity);
+            GameObject secondfiredBullet = Instantiate(bullet, tipOfWeapon.position ,Quaternion.identity);
+
+            firstfiredBullet.GetComponent<Bullet>().firedPoint = tipOfWeapon;
+            firstfiredBullet.GetComponent<Bullet>().SetRelatedWeapon(gameObject);
+            firstfiredBullet.GetComponent<Bullet>().firstBullet = true;
+
+            secondfiredBullet.GetComponent<Bullet>().firedPoint = tipOfWeapon;
+            secondfiredBullet.GetComponent<Bullet>().SetRelatedWeapon(gameObject);
+            secondfiredBullet.GetComponent<Bullet>().secondBullet = true;
+        }
+        
+        StartCoroutine(MuzzleFlashoff());
+    }
+    IEnumerator MuzzleFlashoff()
+    {
+        yield return new WaitForSeconds(0.3f); // Wait for 2 seconds
+
+        if(muzzleFlashVFX != null)
+        {
+            muzzleFlashVFX.SetActive(false);
+        }
+    }
+    public float GetWeaponsFireRange()
+    {
+        return ownerSelector.GetComponent<WeaponSelector>().GetInGameFireRange() + fireRange;
+    }
+    private void UpdateFireRate()
+    {
+        currentFireRate = ownerSelector.GetComponent<WeaponSelector>().GetInGateFireRate() + fireRate;
+    }
+
+}
