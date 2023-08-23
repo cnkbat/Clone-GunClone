@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
-
 public class Gate : MonoBehaviour , IDamagable , IInteractable
 {
     //Variables
@@ -57,6 +56,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
             int rand = Random.Range(10,25);
             damage = rand;
             damageText.text = damage.ToString();
+            gateValue = Mathf.Clamp(gateValue,-50,50);
         }
     }
 

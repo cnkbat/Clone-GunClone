@@ -19,7 +19,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
 
     public int givingValue; 
 
-    public bool  inityearCard, gunAmountCard,fireRateCard,fireRangeCard, doubleShotCard;
+    public bool  inityearCard, gunAmountCardPlus,fireRateCard,fireRangeCard, doubleShotCard , gunAmountCardMulti;
     [SerializeField] int maxfillingValue;
     int currentValue;
 
@@ -31,7 +31,6 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
 
     [Header("Sliding")]
     [SerializeField] float slidingMoveDur;
-    [SerializeField] Transform slidingPoint;
     [SerializeField] Vector3 rotationValue;
 
     [Header("UpgradeSystem")]
@@ -44,8 +43,6 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         firstLevel = true;
         originalScale = transform.localScale;
         LevelChoosing();
-        slidingPoint.position = new Vector3(GameManager.instance.leftPlatform.transform.position.x,
-            transform.position.y,transform.position.z);
     }
     public void LevelChoosing()
     {
@@ -97,9 +94,10 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
         playerCollider.SetActive(false);
         
-        transform.DOMove(slidingPoint.position,slidingMoveDur).
-            OnPlay(() => {transform.DORotate(rotationValue,slidingMoveDur);})
-                .OnComplete(MoveTowardsCollectionPoint);
+        transform.DOMove(new Vector3(GameManager.instance.leftPlatform.transform.position.x,transform.position.y,
+            transform.position.z),slidingMoveDur).
+                OnPlay(() => {transform.DORotate(rotationValue,slidingMoveDur);})
+                    .OnComplete(MoveTowardsCollectionPoint);
     }
 
     public void UpgradeActionEnd()
@@ -108,11 +106,13 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         if(GameManager.instance.collectedCards.Count == 0)
         {
             GameManager.instance.upgradePhase = false;
+            GameManager.instance.EnableCam(GameManager.instance.endingCam);
         }
 
         Destroy(gameObject);
         
     }
+
     private void MoveTowardsCollectionPoint()
     {
         transform.DOMove(GameManager.instance.collectionPoint.position,GameManager.instance.cardCollectionMoveDur);
@@ -121,7 +121,12 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
     private void UpdateGateText()
     {
         textOnTop.text = currentValue.ToString() + "/" + maxfillingValue;
+        if(!addOnValueText) return;
         addOnValueText.text = "+" + givingValue.ToString();
+        if(gunAmountCardMulti)
+        {
+            addOnValueText.text = "X" + givingValue.ToString();
+        }
     }
     private void GateHitEffect()
     {

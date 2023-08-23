@@ -25,10 +25,6 @@ public class GameManager : MonoBehaviour
     [Header("Visual")]
     public GameObject mainCam,startingCam,endingCam,upgradeCam;
 
-    [Header("Ending")]
-    public GameObject endGun;
-    public Vector3 rotationSpeed = new Vector3(100, 0, 0); // Adjust the rotation speed as needed
-
     [Header("Collecting Cards")]
     public List<GameObject> collectedCards;
     public Transform collectionPoint;
@@ -45,9 +41,16 @@ public class GameManager : MonoBehaviour
     public List<Transform> upgradeCardPlacements;
     public Transform playerUpgradingPos;
     public float upgradePosMoveDur;
+    public Vector3 upgradeCardScale;
 
     [Header("Testing")]
     [SerializeField] GameObject testObject;
+    
+    [Header("Obstacle")]
+    public float obstaclePushValue;
+
+    [Header("Bullet")]
+    public bool bulletSizeUp = false;
     
     ////
     ////   ***********<SUMMARY>*************
@@ -73,9 +76,6 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     {
-        if(endGun)
-        endGun.transform.Rotate(rotationSpeed * Time.deltaTime);
-
         if(Input.GetKeyDown(KeyCode.A))    
         {
             Player.instance.SpawnWeaponSelector(testObject);
@@ -89,26 +89,19 @@ public class GameManager : MonoBehaviour
       //  UIManager.instance.FinishHud();
     }
     
-    public void CameraStateChange()
+    public void EnableCam(GameObject newCam)
     {
-        if(startingCam.activeSelf)
-        {
-            startingCam.SetActive(false);
-        }
-        else
-        {
-            startingCam.SetActive(true);
-        }   
+        newCam.SetActive(true);
     }
 
     public void FinishLinePassed()
     {
-        endingCam.SetActive(true);
+        EnableCam(endingCam);
     }
 
     public void UpgradePhase()
     {
-        upgradeCam.SetActive(true);
+        EnableCam(upgradeCam);
         upgradePhase = true;
         Player.instance.gameObject.transform.DOMove(playerUpgradingPos.position, upgradePosMoveDur);
 
@@ -117,6 +110,7 @@ public class GameManager : MonoBehaviour
             collectedCards[i].tag = "UpgradeCard";
             collectedCards[i].transform.DOMove(upgradeCardPlacements[i].position, upgradePosMoveDur);
             collectedCards[i].transform.DORotate(new Vector3(0,0,180),upgradePosMoveDur,RotateMode.Fast);
+            collectedCards[i].transform.localScale = upgradeCardScale;
         }
     }
     

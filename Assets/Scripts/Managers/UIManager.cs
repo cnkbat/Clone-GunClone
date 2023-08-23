@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
     {
         startButton.interactable = false;
         GameManager.instance.gameHasStarted = true;
-        GameManager.instance.CameraStateChange();
+        GameManager.instance.EnableCam(GameManager.instance.mainCam);
         canHideStartingUI = true;
     }
     private void HideStartingUI()

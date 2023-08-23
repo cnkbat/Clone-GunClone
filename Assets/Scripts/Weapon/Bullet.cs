@@ -13,16 +13,24 @@ public class Bullet : MonoBehaviour
     [SerializeField] GameObject relatedWeapon; 
 
     [SerializeField] GameObject hitEffect;
-    
-
     public bool firstBullet,secondBullet = false;
 
+    [Header("Bigger Bullets")]
+    [SerializeField] Vector3 biggerScale;
+    [SerializeField] float biggerScaler = 1.25f;
     private void Start() 
     {
         firedPointCurrent = firedPoint.position;
         
         fireDist =  relatedWeapon.GetComponent<Weapon>().GetWeaponsFireRange();
-    
+
+        biggerScale = transform.localScale * biggerScaler;
+
+        if(GameManager.instance.bulletSizeUp)
+        {
+            Debug.Log("bigger scale on");
+            transform.localScale = biggerScale;
+        }
     }
 
     void Update()

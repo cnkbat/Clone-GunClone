@@ -21,4 +21,13 @@ public class UpgradeManager : MonoBehaviour
             instance = this;
         }   
     }
+    
+    public void SetCostValues()
+    {
+        costs[0] = 50;
+        for (int i = 1; i < 1000; i++)
+        {
+            costs[i] = costs[i - 1] + 50;
+        }
+    }
 }

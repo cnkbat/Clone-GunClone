@@ -48,7 +48,15 @@ public class UpgradeCardChooserCollider : MonoBehaviour
                 gunsInCollider[i].GetComponent<WeaponSelector>().IncrementInGameInitYear(parentUpgradeCard.givingValue);
             }
         }
-        else if(parentUpgradeCard.gunAmountCard)
+        else if(parentUpgradeCard.gunAmountCardPlus)
+        {
+            for (int i = 0; i < gunsInCollider.Count;)
+            {
+                Player.instance.SpawnWeaponSelector(gunsInCollider[0]);
+                break;
+            }
+        }
+        else if(parentUpgradeCard.gunAmountCardMulti)
         {
             for (int i = 0; i < gunsInCollider.Count; i++)
             {
@@ -62,6 +70,7 @@ public class UpgradeCardChooserCollider : MonoBehaviour
                 gunsInCollider[i].GetComponent<WeaponSelector>().ActiveDoubleShot();
             }
         }
+        
 
         parentUpgradeCard.UpgradeActionEnd();
     }
