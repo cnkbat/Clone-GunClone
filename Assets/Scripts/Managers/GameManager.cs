@@ -104,7 +104,8 @@ public class GameManager : MonoBehaviour
         EnableCam(upgradeCam);
         upgradePhase = true;
         Player.instance.gameObject.transform.DOMove(playerUpgradingPos.position, upgradePosMoveDur);
-
+        Player.instance.SetWeaponsInitYearTextState(true);
+        
         for (int i = 0; i < collectedCards.Count; i++)
         {
             collectedCards[i].tag = "UpgradeCard";

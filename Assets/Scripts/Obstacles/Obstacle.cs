@@ -6,10 +6,14 @@ using DG.Tweening;
 
 public class Obstacle : MonoBehaviour , IDamagable, IInteractable
 {
+    [Header("Health")]
     [SerializeField] float maxHealth;
     float currentHealth;
 
-    [SerializeField] Slider healthSlider;
+    [Header("Health Bar")]
+    [SerializeField] Image fillImage;
+    [SerializeField] GameObject healthBar;
+    [Header("Animation")]
     [SerializeField] List<GameObject> parts;
     [SerializeField] List<float> healthPercentages;
     void Start()
@@ -20,6 +24,9 @@ public class Obstacle : MonoBehaviour , IDamagable, IInteractable
             transform.parent.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
             transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
         }
+
+        fillImage.fillAmount = (float)currentHealth/ (float)maxHealth;
+        healthBar.SetActive(false);
     }
 
     public void Interact()
@@ -47,13 +54,16 @@ public class Obstacle : MonoBehaviour , IDamagable, IInteractable
     {
         currentHealth -= Player.instance.playerDamage;
         HitEffect();
-        Debug.Log(currentHealth + " currenthealth");
+
+        healthBar.SetActive(true);
+        fillImage.fillAmount = (float)currentHealth/ (float)maxHealth;
+
         if(currentHealth <= 0)
         {
             if(transform.parent.GetComponent<UpgradeCard>())
             {
-                transform.parent.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
-            transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("OnlyPlayer");
+                transform.parent.gameObject.layer = LayerMask.NameToLayer("Default");
+                transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("OnlyPlayer");
             }
 
             Destroy(gameObject);

@@ -241,6 +241,18 @@ public class Player : MonoBehaviour
         }
         
     }
+    
+    public void SetWeaponsInitYearTextState(bool boolean)
+    {
+        for (int i = 0; i < weaponSelectors.Count; i++)
+        {
+            for (int a = 0; a < weaponSelectors[i].GetComponent<WeaponSelector>().weapons.Count-1; a++)
+            {
+                weaponSelectors[i].GetComponent<WeaponSelector>().weapons[a].GetComponent<Weapon>().UpdateInitYearText(boolean);
+            }
+        }
+    }
+    
     // Getters And Setters
     public void SetMovementSpeed(float newMoveSpeed)
     {

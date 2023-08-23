@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -25,9 +26,12 @@ public class Weapon : MonoBehaviour
     public float damage;
 
     [Header("VFX")]
-    [SerializeField] GameObject muzzleFlashVFX;
-
     [SerializeField] GameObject ownerSelector;
+
+    [Header("UI")]
+    [SerializeField] GameObject initYearImage;
+    [SerializeField] TMP_Text initYearText;
+
     private void Start() 
     {   
         tag = "Weapon";
@@ -65,11 +69,6 @@ public class Weapon : MonoBehaviour
 
     public void FireBullet()
     {
-        if(muzzleFlashVFX != null)
-        {
-            muzzleFlashVFX.SetActive(true);
-        }
-
         transform.DORotate(fireEndRotationValue,firedRotationDelay,RotateMode.Fast).
             OnComplete(ResetPos);
             
@@ -93,25 +92,22 @@ public class Weapon : MonoBehaviour
             secondfiredBullet.GetComponent<Bullet>().SetRelatedWeapon(gameObject);
             secondfiredBullet.GetComponent<Bullet>().secondBullet = true;
         }
-        
-        StartCoroutine(MuzzleFlashoff());
-    }
-    IEnumerator MuzzleFlashoff()
-    {
-        yield return new WaitForSeconds(0.3f); // Wait for 2 seconds
-
-        if(muzzleFlashVFX != null)
-        {
-            muzzleFlashVFX.SetActive(false);
-        }
     }
     public float GetWeaponsFireRange()
     {
         return ownerSelector.GetComponent<WeaponSelector>().GetInGameFireRange() + fireRange;
     }
-    private void UpdateFireRate()
+
+    public void UpdateFireRate()
     {
         currentFireRate = ownerSelector.GetComponent<WeaponSelector>().GetInGateFireRate() + fireRate;
     }
 
+
+    public void UpdateInitYearText(bool boolean)
+    {
+        initYearImage.SetActive(boolean);
+        initYearText.text = ownerSelector.GetComponent<WeaponSelector>().GetInGameInitYear().ToString();
+        Debug.Log("update init year text");
+    }
 }

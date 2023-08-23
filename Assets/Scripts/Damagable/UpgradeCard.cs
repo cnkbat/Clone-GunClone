@@ -14,7 +14,6 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
     [SerializeField] int firstLevelGivingValue;
     [SerializeField] int secondLevelGivingValue, thirdLevelGivingValue;
     [SerializeField] int firstLevelMaxValue, secondLevelMaxValue, thirdLevelMaxValue;
-    [SerializeField] Slider firstSlider, secondSlider, thirdSlider;
     bool firstLevel,secondLevel, thirdLevel;
 
     public int givingValue; 
@@ -38,6 +37,9 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
 
     [SerializeField] GameObject playerCollider;
 
+    [Header("HealthBar")]
+    [SerializeField] Image firstStar;
+    [SerializeField] Image secondStar, thirdStar;
     void Start()
     {
         firstLevel = true;
@@ -58,6 +60,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         }
         else if(thirdLevel)
         {
+            Debug.Log("thirdlevel");
             maxfillingValue = thirdLevelMaxValue;
             givingValue = thirdLevelGivingValue;
         }
@@ -68,21 +71,40 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
     {
         currentValue +=1;
        // GateHitEffect();
-        if(currentValue >= firstLevelMaxValue)
+        if(currentValue >= firstLevelMaxValue && !secondLevel && !thirdLevel)
         {
             currentValue = 0;
             firstLevel = false;
             secondLevel = true;
             thirdLevel = false;
+            if(firstStar) firstStar.fillAmount = 1;
         }
-        else if(currentValue >= secondLevelMaxValue)
+        else if(currentValue >= secondLevelMaxValue && !firstLevel && !thirdLevel )
         {
             currentValue = 0;
             firstLevel = false;
             secondLevel = false;
             thirdLevel = true;
+            if(secondStar) secondStar.fillAmount = 1;
+        }
+        else if(currentValue >= thirdLevelMaxValue && !firstLevel && !secondLevel)
+        {
+            if(thirdStar) thirdStar.fillAmount = 1;
+            Interact();
         }
 
+        if(firstLevel && firstStar)
+        {
+            firstStar.fillAmount = (float)currentValue / (float)firstLevelMaxValue;
+        }
+        else if(secondLevel && secondStar)
+        {
+            secondStar.fillAmount = (float)currentValue / (float)secondLevelMaxValue;
+        }
+        else if(thirdLevel && thirdStar)
+        {
+            thirdStar.fillAmount = (float)currentValue / (float)thirdLevelMaxValue;
+        }
         LevelChoosing();
         GateHitEffect();
 
@@ -107,6 +129,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         {
             GameManager.instance.upgradePhase = false;
             GameManager.instance.EnableCam(GameManager.instance.endingCam);
+            Player.instance.SetWeaponsInitYearTextState(false);
         }
 
         Destroy(gameObject);

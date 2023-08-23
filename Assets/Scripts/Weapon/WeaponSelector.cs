@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponSelector : MonoBehaviour
 {
     [Header("Weapon Selecting")] 
-    [SerializeField] List<GameObject> weapons;
+    public List<GameObject> weapons;
     public List<int> weaponChoosingInitYearsLimit;
 
     [Header("Weapon")]
@@ -19,9 +19,13 @@ public class WeaponSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-         Player.instance.weaponSelectors.Add(gameObject);
+        Player.instance.weaponSelectors.Add(gameObject);
         Player.instance.weaponChoosingInitYearsLimit = weaponChoosingInitYearsLimit;
         WeaponSelecting();
+        Debug.Log(inGameInitYear);
+
+        if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
+        else  Player.instance.SetWeaponsInitYearTextState(false);
     }
 
     public void WeaponSelecting()
@@ -36,6 +40,9 @@ public class WeaponSelector : MonoBehaviour
             currentWeapon = weapons[0];
             weaponIndex = 0;
             currentWeapon.SetActive(true);
+
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
+            
         }
         if(inGameInitYear > weaponChoosingInitYearsLimit[0] && inGameInitYear <= weaponChoosingInitYearsLimit[1] && currentWeapon != weapons[1]) 
         {
@@ -47,6 +54,7 @@ public class WeaponSelector : MonoBehaviour
             currentWeapon = weapons[1];
             weaponIndex = 1;
             currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
         if(inGameInitYear > weaponChoosingInitYearsLimit[1] && inGameInitYear <= weaponChoosingInitYearsLimit[2] && currentWeapon != weapons[2])
         {
@@ -58,6 +66,7 @@ public class WeaponSelector : MonoBehaviour
             currentWeapon = weapons[2];
             weaponIndex = 2;
             currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
         if(inGameInitYear > weaponChoosingInitYearsLimit[2] && inGameInitYear <= weaponChoosingInitYearsLimit[3] && currentWeapon != weapons[3])
         {
@@ -69,6 +78,7 @@ public class WeaponSelector : MonoBehaviour
             weaponIndex = 3;
             currentWeapon = weapons[3];
             currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
 
         if(inGameInitYear > weaponChoosingInitYearsLimit[3] && inGameInitYear <= weaponChoosingInitYearsLimit[4] && currentWeapon != weapons[4])
@@ -81,6 +91,7 @@ public class WeaponSelector : MonoBehaviour
             weaponIndex = 4;
             currentWeapon = weapons[4];
             currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
 
         if(inGameInitYear > weaponChoosingInitYearsLimit[4] && inGameInitYear <= weaponChoosingInitYearsLimit[5] && currentWeapon != weapons[5])
@@ -93,6 +104,7 @@ public class WeaponSelector : MonoBehaviour
             weaponIndex = 5;
             currentWeapon = weapons[5];
             currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
         if(inGameInitYear > weaponChoosingInitYearsLimit[5] && inGameInitYear <= weaponChoosingInitYearsLimit[6] && currentWeapon != weapons[6])
         {
@@ -104,6 +116,7 @@ public class WeaponSelector : MonoBehaviour
             currentWeapon = weapons[6];
             weaponIndex = 6;
             currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
 
         currentWeapon.transform.parent = transform;
@@ -149,7 +162,7 @@ public class WeaponSelector : MonoBehaviour
         }
         inGameInitYear += value;
         
-
+        if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         WeaponSelecting();
         
     }
