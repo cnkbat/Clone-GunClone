@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4035660339279192805}
   - component: {fileID: 1415620821747334978}
   m_Layer: 5
-  m_Name: Image
+  m_Name: FillImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,6 +479,7 @@ GameObject:
   - component: {fileID: 6910010943349445165}
   - component: {fileID: 8647400697995142887}
   - component: {fileID: -3414527959444176322}
+  - component: {fileID: 3469287838025181073}
   m_Layer: 0
   m_Name: BulletGate
   m_TagString: Gate
@@ -493,7 +494,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134055226588825394}
-  m_LocalRotation: {x: -0.49999997, y: -0.49999997, z: -0.49999997, w: 0.49999997}
+  m_LocalRotation: {x: -0.4998778, y: -0.4998778, z: -0.50012213, w: 0.50012213}
   m_LocalPosition: {x: -0.77899075, y: 2.81, z: 1.5945272}
   m_LocalScale: {x: 10.316809, y: 135.70752, z: 192.00168}
   m_ConstrainProportionsScale: 0
@@ -501,7 +502,7 @@ Transform:
   - {fileID: 5247961369091447974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.972, y: 0, z: -90}
 --- !u!33 &6910010943349445165
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -566,3 +567,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBulletCounter: 25
+  fillImage: {fileID: 1415620821747334978}
+--- !u!65 &3469287838025181073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134055226588825394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020000085, y: 0.030514324, z: 0.019999994}
+  m_Center: {x: 0, y: 0, z: 0}

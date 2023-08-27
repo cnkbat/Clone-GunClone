@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using Cinemachine;
@@ -51,7 +50,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Bullet")]
     public bool bulletSizeUp = false;
-    
+
+    [Header("LevelSelector")]
+    public List<GameObject> levels;
+    public int numOfPresetLevels;
+    public Transform levelSpawnTransform;
+
     ////
     ////   ***********<SUMMARY>*************
     //// Game manager script is alive every scene.
@@ -72,16 +76,30 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdatePlayerDamage();
+        LevelChooser();
     }
 
     private void Update() 
     {
         if(Input.GetKeyDown(KeyCode.A))    
         {
-            Player.instance.SpawnWeaponSelector(testObject);
+           // Player.instance.SpawnWeaponSelector(testObject);
+           int levelRand = Random.Range(0,1);
+           print(levelRand);
         }
     }
-
+    public void LevelChooser()
+    {
+        if(Player.instance.currentLevelIndex <= numOfPresetLevels)
+        {
+            Instantiate(levels[Player.instance.currentLevelIndex],levelSpawnTransform.position,Quaternion.identity);
+        }
+        else
+        {
+            int levelRand = Random.Range(0,levels.Count);
+            Instantiate(levels[levelRand],levelSpawnTransform.position,Quaternion.identity);
+        }
+    }
     public void EndLevel()
     {
         gameHasEnded = true;

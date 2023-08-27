@@ -173,9 +173,8 @@ public class Player : MonoBehaviour
             weaponSelectors[i].GetComponent<BoxCollider>().enabled = true;
         }
 
-        // bu muhabbet böyle değil
-        //currentLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        print(currentLevelIndex);
+        currentLevelIndex++;
+
     }
     // SAVE LOAD
     public void SavePlayerData()

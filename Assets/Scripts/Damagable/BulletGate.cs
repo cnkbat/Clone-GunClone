@@ -15,6 +15,7 @@ public class BulletGate : MonoBehaviour, IDamagable,IInteractable
         if(isGateActive)
         {
             GameManager.instance.bulletSizeUp = true;
+            Destroy(gameObject);
         }
         fillImage.fillAmount =  (float)bulletCounter/ (float)maxBulletCounter;
     }
