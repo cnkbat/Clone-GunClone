@@ -142,6 +142,7 @@ MonoBehaviour:
   ownerSelector: {fileID: 0}
   initYearImage: {fileID: 7959482097511504479}
   initYearText: {fileID: 6093452639636708260}
+  originalMaterial: {fileID: 2100000, guid: 7c16b6e19b642c247ba765631635ff9e, type: 2}
 --- !u!1 &4423361765348043724
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,8 +169,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4423361765348043724}
   m_LocalRotation: {x: -0, y: 0.8962344, z: 0.44358078, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 1.169}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.58}
+  m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9167961197698043922}
@@ -179,7 +180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -127.335, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.103, y: 0.487}
+  m_AnchoredPosition: {x: -0.01, y: 1.9}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2855633976276149195

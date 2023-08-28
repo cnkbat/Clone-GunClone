@@ -44,6 +44,8 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
     {
         firstLevel = true;
         originalScale = transform.localScale;
+        upgradeCardChooserCollider = transform.Find("WeaponChooserCollider").gameObject;
+
         LevelChoosing();
     }
     public void LevelChoosing()
@@ -144,6 +146,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
     private void UpdateGateText()
     {
         textOnTop.text = currentValue.ToString() + "/" + maxfillingValue;
+        
         if(!addOnValueText) return;
         addOnValueText.text = "+" + givingValue.ToString();
         if(gunAmountCardMulti)

@@ -37,8 +37,7 @@ public class Obstacle : MonoBehaviour , IDamagable, IInteractable
             transform.parent.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
             transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
         }
-        
-        GetComponent<BoxCollider>().enabled = false;
+        transform.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
     }
 
     private void HitEffect()

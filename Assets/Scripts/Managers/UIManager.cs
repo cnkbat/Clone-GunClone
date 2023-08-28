@@ -10,30 +10,24 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance {get; private set;}
-    [Header("Starting Hud")]
 
+    [Header("Starting Hud")]
     [SerializeField] GameObject startingHud;
     bool canHideStartingUI;
-    [SerializeField] Button startButton, fireRateButton, inityearButton;
 
+    [SerializeField] Button startButton, fireRateButton, inityearButton;
     [SerializeField] Image fingerImage;
     [SerializeField] float leftRightMovement;
     [SerializeField] float animTime;
 
-        [Tooltip("SettingButton")]
-
-    [SerializeField] Image slidingUI;
-    [SerializeField] float moveValue;
-
 
     [Header("Game Hud")]
     public GameObject gameHud;
-
+    [SerializeField] TMP_Text initYearNumber;
     [SerializeField] TMP_Text currentLevelText;
 
     [Header("GameHud Attributes")]
-    [SerializeField] TMP_Text initYearNumber;
-    [SerializeField] TMP_Text playerMoneyText, playerStarsText, reducerText;
+    [SerializeField] TMP_Text playerMoneyText, reducerText;
     [SerializeField] float reducerMoveValue,reducerMoveDur;
     [SerializeField] Vector2 reducerTextResetPos;
 
@@ -60,11 +54,11 @@ public class UIManager : MonoBehaviour
     }
     private void Start() 
     {
-        UpdateStartingHudTexts();
         MoveFinger();
-        UpdateWeaponBar();
-        reducerText.rectTransform.anchoredPosition = reducerTextResetPos;
-        reducerText.gameObject.SetActive(false);
+        UpdateStartingHudTexts();
+      //  UpdateWeaponBar();
+        /*reducerText.rectTransform.anchoredPosition = reducerTextResetPos;
+        reducerText.gameObject.SetActive(false); */
     }
     private void Update() 
     {
@@ -97,30 +91,15 @@ public class UIManager : MonoBehaviour
         weaponSlider.value = Player.instance.initYear;
     }
 
-    public void OnSettingsButtonPressed()
-    {
-
-        if(slidingUI.color.a > 0)
-        {
-            slidingUI.rectTransform.DOAnchorPos(new Vector2(slidingUI.rectTransform.anchoredPosition.x,
-                slidingUI.rectTransform.anchoredPosition.y + moveValue), 0.4f);
-            
-            slidingUI.DOFade(0,0.3f);
-        }
-        else if(slidingUI.color.a <= 10)
-        {
-            slidingUI.rectTransform.DOAnchorPos(new Vector2(slidingUI.rectTransform.anchoredPosition.x,
-                slidingUI.rectTransform.anchoredPosition.y - moveValue), 0.4f);
-            slidingUI.DOFade(1,0.3f);
-        }
-    }
     // STARTING HUD
     public void OnPlayButtonPressed()
     {
         startButton.interactable = false;
         GameManager.instance.gameHasStarted = true;
+        
         GameManager.instance.EnableCam(GameManager.instance.mainCam);
         canHideStartingUI = true;
+        Player.instance.SetWeaponsInitYearTextState(false);
     }
     private void HideStartingUI()
     {
@@ -141,47 +120,43 @@ public class UIManager : MonoBehaviour
             (new Vector3(fingerImage.rectTransform.anchoredPosition.x + leftRightMovement,
                 fingerImage.rectTransform.anchoredPosition.y),animTime)
                     .SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+                    
     }
-    /*public void UpdateInitYearText()
-    {
-        initYearNumber.text = Player.instance.GetInGameInitYear().ToString();
-    }*/
     public void UpdateMoneyText()
     {
         playerMoneyText.text = Player.instance.money.ToString();
     }
     public void UpdateStartingHudTexts()
     {
-        currentLevelText.text = SceneManager.GetActiveScene().name;
+        currentLevelText.text = "LEVEL " + (Player.instance.currentLevelIndex + 1).ToString();
       //  UpdateInitYearText();
         UpdateMoneyText();
-        playerStarsText.text = Player.instance.stars.ToString();
 
-        fireRateLevelText.text = "Level " + (Player.instance.fireRateValueIndex + 1).ToString();
-        initYearLevelText.text = "Level " + (Player.instance.initYearValueIndex + 1).ToString();
+        fireRateLevelText.text = "LEVEL " + (Player.instance.fireRateValueIndex + 1).ToString();
+        initYearLevelText.text = "LEVEL " + (Player.instance.initYearValueIndex + 1).ToString();
 
-        fireRateCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.fireRateValueIndex].ToString());
-        initYearCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.initYearValueIndex].ToString());
+        fireRateCostText.text = (UpgradeManager.instance.costs[Player.instance.fireRateValueIndex].ToString());
+        initYearCostText.text = (UpgradeManager.instance.costs[Player.instance.initYearValueIndex].ToString());
     }
     public void UpdateEndingHudTexts()
     {
-        fireRangeLevelText.text = "Level " + (Player.instance.fireRangeValueIndex + 1 ).ToString();
-        incomeLevelText.text = "Level " + (Player.instance.incomeValueIndex + 1 ).ToString();
+        fireRangeLevelText.text = "LEVEL " + (Player.instance.fireRangeValueIndex + 1 ).ToString();
+        incomeLevelText.text = "LEVEL " + (Player.instance.incomeValueIndex + 1 ).ToString();
 
-        fireRangeCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.fireRangeValueIndex].ToString());
-        incomeCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.incomeValueIndex].ToString());
+        fireRangeCostText.text = (UpgradeManager.instance.costs[Player.instance.fireRangeValueIndex].ToString());
+        incomeCostText.text = (UpgradeManager.instance.costs[Player.instance.incomeValueIndex].ToString());
 
     }
     // Upgrades
     public void OnFireRateUpdatePressed()
     {
-        Debug.Log("presssed");
+        
         if(Player.instance.money >= UpgradeManager.instance.costs[Player.instance.fireRateValueIndex])
         {
             Player.instance.money -= UpgradeManager.instance.costs[Player.instance.fireRateValueIndex];
             Player.instance.fireRateValueIndex +=1;
-            fireRateLevelText.text = "Level " + (Player.instance.fireRateValueIndex + 1).ToString();
-            fireRateCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.fireRateValueIndex].ToString());
+            fireRateLevelText.text = "LEVEL " + (Player.instance.fireRateValueIndex + 1).ToString();
+            fireRateCostText.text = (UpgradeManager.instance.costs[Player.instance.fireRateValueIndex].ToString());
             Player.instance.SetUpgradedValues();
             UpdateMoneyText();
             Player.instance.SavePlayerData();
@@ -194,8 +169,8 @@ public class UIManager : MonoBehaviour
         {
             Player.instance.money -= UpgradeManager.instance.costs[Player.instance.fireRangeValueIndex];
             Player.instance.fireRangeValueIndex +=1;
-            fireRangeLevelText.text = "Level " + (Player.instance.fireRangeValueIndex + 1).ToString();
-            fireRangeCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.fireRangeValueIndex].ToString());
+            fireRangeLevelText.text = "LEVEL " + (Player.instance.fireRangeValueIndex + 1).ToString();
+            fireRangeCostText.text = (UpgradeManager.instance.costs[Player.instance.fireRangeValueIndex].ToString());
             Player.instance.SetUpgradedValues();
             UpdateMoneyText();
             Player.instance.SavePlayerData();
@@ -208,8 +183,8 @@ public class UIManager : MonoBehaviour
         {
             Player.instance.money -= UpgradeManager.instance.costs[Player.instance.initYearValueIndex];
             Player.instance.initYearValueIndex +=1;
-            initYearLevelText.text = "Level " + (Player.instance.initYearValueIndex + 1).ToString();
-            initYearCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.initYearValueIndex].ToString());
+            initYearLevelText.text = "LEVEL " + (Player.instance.initYearValueIndex + 1).ToString();
+            initYearCostText.text = (UpgradeManager.instance.costs[Player.instance.initYearValueIndex].ToString());
             UpdateMoneyText();
             Player.instance.SetUpgradedValues();
            // UpdateInitYearText();
@@ -219,13 +194,12 @@ public class UIManager : MonoBehaviour
     }
     public void OnIncomeUpdatePressed()
     {
-        print("income");
         if(Player.instance.money >= UpgradeManager.instance.costs[Player.instance.incomeValueIndex])
         {
             Player.instance.money -= UpgradeManager.instance.costs[Player.instance.incomeValueIndex];
             Player.instance.incomeValueIndex +=1;
-            incomeLevelText.text = "Level " + (Player.instance.incomeValueIndex + 1).ToString();
-            incomeCostText.text = "$" + (UpgradeManager.instance.costs[Player.instance.incomeValueIndex].ToString());
+            incomeLevelText.text = "LEVEL " + (Player.instance.incomeValueIndex + 1).ToString();
+            incomeCostText.text = (UpgradeManager.instance.costs[Player.instance.incomeValueIndex].ToString());
             UpdateMoneyText();
             Player.instance.SetUpgradedValues();
             Player.instance.SavePlayerData();
@@ -238,8 +212,6 @@ public class UIManager : MonoBehaviour
     public void FinishHud()
     {
         endHud.SetActive(true);
-        weaponSlider.gameObject.SetActive(false);
-        initYearImage.SetActive(false);
         UpdateEndingHudTexts();
     }
 

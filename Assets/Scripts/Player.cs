@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
     public int fireRateValueIndex;
     public int fireRangeValueIndex, initYearValueIndex, incomeValueIndex;
     public int money;
-    public int stars; 
     public int currentLevelIndex;
     public float playerDamage;
 
@@ -71,7 +70,7 @@ public class Player : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         boxCollider = GetComponent<BoxCollider>();
         tag = "Player";
-       // LoadPlayerData();
+        LoadPlayerData();
         SetUpgradedValues();
 
         originalMoveSpeed = forwardMoveSpeed;
@@ -194,7 +193,6 @@ public class Player : MonoBehaviour
             initYearValueIndex = data.initYearValueIndex;
             incomeValueIndex = data.incomeValueIndex;
             money = data.money;
-            stars = data.stars;
             fireRangeValueIndex = data.fireRangeValueIndex;
         }
     }
@@ -219,11 +217,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SpawnWeaponSelector(GameObject objectToSpawn)
+    public void SpawnWeaponSelector(GameObject objectToSpawn, float fireRange , float fireRate, int initYear)
     {
         if(positiveTurn)
         {
             GameObject spawnedWS = Instantiate(objectToSpawn,weaponSelectorsTransformPositive[WSPositiveList.Count].position,Quaternion.identity);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(fireRange);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(fireRate);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(initYear);
+            spawnedWS.GetComponent<WeaponSelector>().isCollectable = false;
+            spawnedWS.GetComponent<Rigidbody>().useGravity = true;
+            spawnedWS.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            spawnedWS.gameObject.layer = LayerMask.NameToLayer("Player");
+            //spawnedWS.GetComponent<WeaponSelector>().SetStartingValues();  
+
+
             spawnedWS.transform.parent = transform;
             WSPositiveList.Add(spawnedWS);
             positiveTurn = false;
@@ -233,6 +241,16 @@ public class Player : MonoBehaviour
         else if(negativeTurn)
         {
             GameObject spawnedWS = Instantiate(objectToSpawn,weaponSelectorsTransformNegative[WSNegativeList.Count].position,Quaternion.identity);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(fireRange);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(fireRate);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(initYear);
+            spawnedWS.GetComponent<WeaponSelector>().isCollectable = false;
+            spawnedWS.GetComponent<Rigidbody>().useGravity = true;
+            spawnedWS.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            spawnedWS.gameObject.layer = LayerMask.NameToLayer("Player");
+         //   spawnedWS.GetComponent<WeaponSelector>().SetStartingValues();   
+
+            
             spawnedWS.transform.parent = transform;
             WSNegativeList.Add(spawnedWS);
             positiveTurn = true;
@@ -245,7 +263,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < weaponSelectors.Count; i++)
         {
-            for (int a = 0; a < weaponSelectors[i].GetComponent<WeaponSelector>().weapons.Count-1; a++)
+            for (int a = 0; a < weaponSelectors[i].GetComponent<WeaponSelector>().weapons.Count; a++)
             {
                 weaponSelectors[i].GetComponent<WeaponSelector>().weapons[a].GetComponent<Weapon>().UpdateInitYearText(boolean);
             }
@@ -265,11 +283,8 @@ public class Player : MonoBehaviour
         fireRange = UpgradeManager.instance.fireRangeValues[fireRangeValueIndex];
         income = UpgradeManager.instance.incomeValues[incomeValueIndex];
 
-        for (int i = 0; i < weaponSelectors.Count; i++)
-        {
             weaponSelectors[0].
                 GetComponent<WeaponSelector>().SetStartingValues();   
-        }
     }
 
     public void IncrementWeaponSelectorsInitYear(int value)

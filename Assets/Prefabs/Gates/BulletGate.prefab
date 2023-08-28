@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bullet Size
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4da3cde077bfd8846a7398d9997f8ee0, type: 2}
+  m_sharedMaterial: {fileID: -611245631952370228, guid: 4da3cde077bfd8846a7398d9997f8ee0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

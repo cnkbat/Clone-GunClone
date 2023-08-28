@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour
             {
                 if(!(Vector3.Distance(firedPointCurrent,transform.position) > fireDist))
                 {
-                    transform.position = new Vector3(transform.position.x + moveSpeed/6 * Time.deltaTime , transform.position.y, 
+                    transform.position = new Vector3(transform.position.x + moveSpeed/8 * Time.deltaTime , transform.position.y, 
                         transform.position.z + moveSpeed * Time.deltaTime);
                 }   
                 else
@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour
             {
                 if(!(Vector3.Distance(firedPointCurrent,transform.position) > fireDist))
                 {
-                    transform.position = new Vector3(transform.position.x - moveSpeed/6 * Time.deltaTime , transform.position.y, 
+                    transform.position = new Vector3(transform.position.x - moveSpeed/8 * Time.deltaTime , transform.position.y, 
                         transform.position.z + moveSpeed * Time.deltaTime);
                 }   
                 else

@@ -1,31 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
-public class WeaponSelector : MonoBehaviour
+public class WeaponSelector : MonoBehaviour , IInteractable
 {
     [Header("Weapon Selecting")] 
     public List<GameObject> weapons;
     public List<int> weaponChoosingInitYearsLimit;
 
     [Header("Weapon")]
-    [SerializeField] GameObject currentWeapon;
+    public GameObject currentWeapon;
 
     [Tooltip("Current Attributes")]
     private int inGameInitYear;
     private float inGameFireRate,inGameFireRange;
 
     int weaponIndex;
-    // Start is called before the first frame update
+
+    public bool isCollectable;    
+    public bool isFirstWS;
+
     void Start()
     {   
-        Player.instance.weaponSelectors.Add(gameObject);
+        if(!isFirstWS && isCollectable) Player.instance.weaponSelectors.Add(gameObject);
+
         Player.instance.weaponChoosingInitYearsLimit = weaponChoosingInitYearsLimit;
         WeaponSelecting();
-        Debug.Log(inGameInitYear);
 
         if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
-        else  Player.instance.SetWeaponsInitYearTextState(false);
+        else Player.instance.SetWeaponsInitYearTextState(false);
+        
+        if(GameManager.instance.gameHasStarted) Player.instance.SetWeaponsInitYearTextState(true);
+        else Player.instance.SetWeaponsInitYearTextState(false);
+
+        if(isCollectable) 
+        {
+            SetStartingValues();
+            return;
+        }
+
     }
 
     public void WeaponSelecting()
@@ -137,19 +151,35 @@ public class WeaponSelector : MonoBehaviour
     {
         return inGameFireRange;
     }
-    public float GetInGateFireRate()
+    public float GetInGameFireRate()
     {
         return inGameFireRate;
+    }
+
+    //spawning 
+    public void SetInGameInitYear(int newInitYear)
+    {
+        inGameInitYear = newInitYear;
+        WeaponSelecting();
+    } 
+    public void SetInGameFireRange(float newFireRange)
+    {
+        inGameFireRange = newFireRange;
+    }
+    public void SetInGameFireRate(float newFireRate)
+    {
+        inGameFireRate = newFireRate;
     }
 
     //SETTERS
     public void IncrementInGameFireRange(float value)
     {
-        inGameFireRange += value;
+        float effectiveValue = value / 500;
+        inGameFireRange +=  effectiveValue;
     }
     public void IncrementInGameFireRate(float value)
     {
-        float effectiveValue = value / 100;
+        float effectiveValue = value / 500;
         Debug.Log(effectiveValue);
         inGameFireRate -= effectiveValue;
     }
@@ -172,6 +202,15 @@ public class WeaponSelector : MonoBehaviour
         for (int i = 0; i < weapons.Count; i++)
         {   
             weapons[i].GetComponent<Weapon>().doubleShotActive = true;
+        }
+    }
+
+    public void Interact()
+    {
+        if(isCollectable)
+        {
+            Player.instance.SpawnWeaponSelector(gameObject,inGameFireRange,inGameFireRate,inGameInitYear);
+            Destroy(gameObject);
         }
     }
 }

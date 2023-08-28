@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public Transform playerUpgradingPos;
     public float upgradePosMoveDur;
     public Vector3 upgradeCardScale;
+    public Material highlitedMaterial;
 
     [Header("Testing")]
     [SerializeField] GameObject testObject;
@@ -55,6 +56,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> levels;
     public int numOfPresetLevels;
     public Transform levelSpawnTransform;
+
+    [Header("SmallingHexagons")]
+    public List<Material> hexagonMaterials;
 
     ////
     ////   ***********<SUMMARY>*************
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
     {
         UpdatePlayerDamage();
         LevelChooser();
+        Player.instance.SetWeaponsInitYearTextState(true);
     }
 
     private void Update() 
@@ -104,7 +109,7 @@ public class GameManager : MonoBehaviour
     {
         gameHasEnded = true;
         Player.instance.PlayerDeath();
-      //  UIManager.instance.FinishHud();
+        UIManager.instance.FinishHud();
     }
     
     public void EnableCam(GameObject newCam)
@@ -136,8 +141,9 @@ public class GameManager : MonoBehaviour
     // buttona basıldığında gerçekleşecek
     public void LoadNextScene()
     {
+        Player.instance.currentLevelIndex ++;
         Player.instance.SavePlayerData();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(0);
     }
     public void UpdatePlayerDamage()
     {

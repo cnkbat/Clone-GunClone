@@ -456,6 +456,7 @@ MonoBehaviour:
   ownerSelector: {fileID: 0}
   initYearImage: {fileID: 6939787704546693385}
   initYearText: {fileID: 4884715358806670926}
+  originalMaterial: {fileID: 2100000, guid: 41be456e0ecbed04dba9c27c3add980c, type: 2}
 --- !u!1 &8914443586457958576
 GameObject:
   m_ObjectHideFlags: 0

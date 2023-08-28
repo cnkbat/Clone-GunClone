@@ -12,6 +12,8 @@ public class UpgradeCardChooserCollider : MonoBehaviour
         if(other.CompareTag("WeaponSelector"))
         {
             gunsInCollider.Add(other.gameObject);
+        
+            other.GetComponent<WeaponSelector>().currentWeapon.GetComponent<MeshRenderer>().material = GameManager.instance.highlitedMaterial;
         }
     }
 
@@ -20,6 +22,8 @@ public class UpgradeCardChooserCollider : MonoBehaviour
         if(other.CompareTag("WeaponSelector"))
         {
             gunsInCollider.Remove(other.gameObject);
+            other.GetComponent<WeaponSelector>().currentWeapon.GetComponent<MeshRenderer>().material =
+                other.GetComponent<WeaponSelector>().currentWeapon.GetComponent<Weapon>().originalMaterial;
         }
     }
 
@@ -52,7 +56,13 @@ public class UpgradeCardChooserCollider : MonoBehaviour
         {
             for (int i = 0; i < gunsInCollider.Count;)
             {
-                Player.instance.SpawnWeaponSelector(gunsInCollider[0]);
+                for (int a = 0; a < parentUpgradeCard.givingValue; a++)
+                {
+                    float spawnedFireRange = gunsInCollider[0].GetComponent<WeaponSelector>().GetInGameFireRange();
+                    float spawnedFireRate = gunsInCollider[0].GetComponent<WeaponSelector>().GetInGameFireRate();
+                    int spawnedInitYear = gunsInCollider[0].GetComponent<WeaponSelector>().GetInGameInitYear();
+                    Player.instance.SpawnWeaponSelector(gunsInCollider[0],spawnedFireRange,spawnedFireRate,spawnedInitYear);
+                }
                 break;
             }
         }
@@ -60,7 +70,15 @@ public class UpgradeCardChooserCollider : MonoBehaviour
         {
             for (int i = 0; i < gunsInCollider.Count; i++)
             {
-                Player.instance.SpawnWeaponSelector(gunsInCollider[i]);
+                for (int a = 0; a < parentUpgradeCard.givingValue; a++)
+                {
+                    float spawnedFireRange = gunsInCollider[i].GetComponent<WeaponSelector>().GetInGameFireRange();
+                    float spawnedFireRate = gunsInCollider[i].GetComponent<WeaponSelector>().GetInGameFireRate();
+                    int spawnedInitYear = gunsInCollider[i].GetComponent<WeaponSelector>().GetInGameInitYear();
+
+
+                    Player.instance.SpawnWeaponSelector(gunsInCollider[i],spawnedFireRange,spawnedFireRate,spawnedInitYear);
+                }
             }
         }
         else if(parentUpgradeCard.doubleShotCard)
@@ -70,8 +88,13 @@ public class UpgradeCardChooserCollider : MonoBehaviour
                 gunsInCollider[i].GetComponent<WeaponSelector>().ActiveDoubleShot();
             }
         }
-        
 
+
+        for (int i = 0; i < gunsInCollider.Count; i++)
+        {
+            gunsInCollider[i].GetComponent<WeaponSelector>().currentWeapon.GetComponent<MeshRenderer>().material = 
+                gunsInCollider[i].GetComponent<WeaponSelector>().currentWeapon.GetComponent<Weapon>().originalMaterial; 
+        }
         parentUpgradeCard.UpgradeActionEnd();
     }
 

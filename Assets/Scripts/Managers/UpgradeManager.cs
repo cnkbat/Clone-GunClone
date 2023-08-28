@@ -20,14 +20,35 @@ public class UpgradeManager : MonoBehaviour
         {
             instance = this;
         }   
+        initYearValues.Clear();
+        costs.Clear();
+
+        SetInitYearValues();
+        SetCostValues();
     }
-    
+    public void SetInitYearValues()
+    {
+        int firstValue = 1700;
+        initYearValues.Add(firstValue);
+
+        for(int i = 1; i < 1000 ; i++)
+        {
+            int valueNext = initYearValues[i - 1] + 5;
+            initYearValues.Add(valueNext);
+        }
+    }
+    /*public void SetFireRangeValues()
+    {
+        fireRangeValues[0] = 
+    } */
     public void SetCostValues()
     {
-        costs[0] = 50;
+        int firstValue = 50;
+        costs.Add(firstValue);
         for (int i = 1; i < 1000; i++)
         {
-            costs[i] = costs[i - 1] + 50;
+            int nextValue = costs[i - 1] + 50;
+            costs.Add(nextValue);
         }
     }
 }

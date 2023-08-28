@@ -8,8 +8,6 @@ public class Weapon : MonoBehaviour
 {
     [Header("Bullet")]
     [SerializeField] GameObject bullet;
-
-    [Header("Attributes")]
     [SerializeField] Transform tipOfWeapon;
 
     [Header("Firing")]
@@ -32,6 +30,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject initYearImage;
     [SerializeField] TMP_Text initYearText;
 
+    [Header("Materials")]
+    public Material originalMaterial;
     private void Start() 
     {   
         tag = "Weapon";
@@ -39,6 +39,7 @@ public class Weapon : MonoBehaviour
         {
             ownerSelector = transform.parent.gameObject;
         }
+        GetComponent<MeshRenderer>().material = originalMaterial;
     }
 
     private void ResetPos()
@@ -51,6 +52,7 @@ public class Weapon : MonoBehaviour
         if(!GameManager.instance.gameHasStarted) return;
         if(GameManager.instance.gameHasEnded) return;
         if(GameManager.instance.upgradePhase) return;
+        if(transform.parent.GetComponent<WeaponSelector>().isCollectable) return;
         
         if(Player.instance.knockbacked)
         {
@@ -100,7 +102,7 @@ public class Weapon : MonoBehaviour
 
     public void UpdateFireRate()
     {
-        currentFireRate = ownerSelector.GetComponent<WeaponSelector>().GetInGateFireRate() + fireRate;
+        currentFireRate = ownerSelector.GetComponent<WeaponSelector>().GetInGameFireRate() + fireRate;
     }
 
 
