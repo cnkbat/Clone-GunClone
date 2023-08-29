@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text fireRateCostText, fireRangeCostText, incomeCostText, initYearCostText;
 
     [Header("Slider")]
-    [SerializeField] Slider weaponSlider;
+    [SerializeField] Image weaponBar;
     [SerializeField] List<GameObject> blackandWhiteImages;
     [SerializeField] List<GameObject> coloredImages;
 
@@ -56,9 +56,8 @@ public class UIManager : MonoBehaviour
     {
         MoveFinger();
         UpdateStartingHudTexts();
-      //  UpdateWeaponBar();
-        /*reducerText.rectTransform.anchoredPosition = reducerTextResetPos;
-        reducerText.gameObject.SetActive(false); */
+        UpdateWeaponBar();
+        reducerText.gameObject.SetActive(false);
     }
     private void Update() 
     {
@@ -70,6 +69,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWeaponBar()
     {
+        Debug.Log("update weapon bar");
         for (int i = 0; i < blackandWhiteImages.Count; i++)
         {
             blackandWhiteImages[i].SetActive(false);
@@ -80,15 +80,14 @@ public class UIManager : MonoBehaviour
         }
 
         // diğeriyle tam aynı değil değişecek
-        coloredImages[Player.instance.weaponIndex].SetActive(true);
-        blackandWhiteImages[Player.instance.weaponIndex].SetActive(true);
-        if(Player.instance.weaponIndex == 0)
-        {
-            weaponSlider.minValue = 1750;
-        } 
-        else weaponSlider.minValue = Player.instance.weaponChoosingInitYearsLimit[Player.instance.weaponIndex -1];
-        weaponSlider.maxValue = Player.instance.weaponChoosingInitYearsLimit[Player.instance.weaponIndex];
-        weaponSlider.value = Player.instance.initYear;
+        coloredImages[Player.instance.weaponSelectors[0].GetComponent<WeaponSelector>().weaponIndex].SetActive(true);
+        blackandWhiteImages[Player.instance.weaponSelectors[0].GetComponent<WeaponSelector>().weaponIndex].SetActive(true);
+
+        float fillValue = (float) Player.instance.initYear -
+           (float) Player.instance.weaponChoosingInitYearsLimit
+           [Player.instance.weaponSelectors[0].GetComponent<WeaponSelector>().weaponIndex + 1];
+
+        weaponBar.fillAmount = (fillValue + 50) / (float)50;
     }
 
     // STARTING HUD
@@ -186,8 +185,9 @@ public class UIManager : MonoBehaviour
             initYearLevelText.text = "LEVEL " + (Player.instance.initYearValueIndex + 1).ToString();
             initYearCostText.text = (UpgradeManager.instance.costs[Player.instance.initYearValueIndex].ToString());
             UpdateMoneyText();
+            Player.instance.SetWeaponsInitYearTextState(true);
+
             Player.instance.SetUpgradedValues();
-           // UpdateInitYearText();
             Player.instance.SavePlayerData();
             
         }

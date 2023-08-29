@@ -16,7 +16,7 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     private int inGameInitYear;
     private float inGameFireRate,inGameFireRange;
 
-    int weaponIndex;
+    public int weaponIndex;
 
     public bool isCollectable;    
     public bool isFirstWS;
@@ -31,7 +31,7 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         else Player.instance.SetWeaponsInitYearTextState(false);
         
-        if(GameManager.instance.gameHasStarted) Player.instance.SetWeaponsInitYearTextState(true);
+        if(!GameManager.instance.gameHasStarted) Player.instance.SetWeaponsInitYearTextState(true);
         else Player.instance.SetWeaponsInitYearTextState(false);
 
         if(isCollectable) 

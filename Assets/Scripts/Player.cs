@@ -152,7 +152,9 @@ public class Player : MonoBehaviour
             weaponSelectors[i].
                 GetComponent<WeaponSelector>().IncrementInGameInitYear(GameManager.instance.playerKnockbackValue);
         }
-    
+
+        UIManager.instance.DisplayInitYearReduce();
+        
         transform.DOMove
             (new Vector3(transform.position.x,transform.position.y, transform.position.z - knockbackValue),knockbackDur).
                 OnComplete(ResetKnockback);

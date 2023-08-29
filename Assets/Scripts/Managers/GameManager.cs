@@ -88,9 +88,7 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))    
         {
-           // Player.instance.SpawnWeaponSelector(testObject);
-           int levelRand = Random.Range(0,1);
-           print(levelRand);
+           Player.instance.KnockbackPlayer();
         }
     }
     public void LevelChooser()
