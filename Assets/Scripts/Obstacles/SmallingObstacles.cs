@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SmallingObstacles : MonoBehaviour,IInteractable,IDamagable
+public class SmallingObstacles : MonoBehaviour,IDamagable
 {
     [Header("Hexagon")]
     [SerializeField] GameObject hexagon;
@@ -41,11 +41,6 @@ public class SmallingObstacles : MonoBehaviour,IInteractable,IDamagable
         }
     }
 
-    public void Interact()
-    {
-        Player.instance.KnockbackPlayer();
-    }
-
     public void TakeDamage()
     {
         currentHealth -= 1;
@@ -64,8 +59,7 @@ public class SmallingObstacles : MonoBehaviour,IInteractable,IDamagable
             else if(gunHexagon)
             {
                 weaponSelector.transform.parent = null;
-                weaponSelector.gameObject.layer = LayerMask.NameToLayer("OnlyPlayer");
-                
+                weaponSelector.gameObject.layer = LayerMask.NameToLayer("GunStand");
                 Destroy(gameObject);
             }
         }

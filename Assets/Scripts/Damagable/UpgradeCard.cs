@@ -66,6 +66,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
             maxfillingValue = thirdLevelMaxValue;
             givingValue = thirdLevelGivingValue;
         }
+
         UpdateGateText();
     }
 
@@ -151,7 +152,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         addOnValueText.text = "+" + givingValue.ToString();
         if(gunAmountCardMulti)
         {
-            addOnValueText.text = "X" + givingValue.ToString();
+            addOnValueText.text = "X" + (givingValue +1).ToString();
         }
     }
     private void GateHitEffect()

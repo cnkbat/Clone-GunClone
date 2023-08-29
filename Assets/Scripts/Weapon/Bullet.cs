@@ -28,7 +28,6 @@ public class Bullet : MonoBehaviour
 
         if(GameManager.instance.bulletSizeUp)
         {
-            Debug.Log("bigger scale on");
             transform.localScale = biggerScale;
         }
     }

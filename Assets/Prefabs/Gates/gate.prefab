@@ -350,11 +350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32156e8aa01bad84e970af109a48928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positiveValue: 4
-  negativeValue: -4
+  positiveValue: 200
+  negativeValue: 150
   gateValue: 0
-  inityearValueMin: 15
-  inityearValueMax: 30
+  inityearValueMin: 3
+  inityearValueMax: 15
   isGateActive: 0
   redPrimaryMaterial: {fileID: 2100000, guid: d8045d3302fc08c4a846ca9f3856750f, type: 2}
   greenPrimaryMaterial: {fileID: 2100000, guid: 2844c1c7af657dd40ade905e8f8cb5bb, type: 2}

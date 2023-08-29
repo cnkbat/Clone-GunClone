@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -17,16 +18,13 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     private float inGameFireRate,inGameFireRange;
 
     public int weaponIndex;
-
-    public bool isCollectable;    
+    public bool isCollectable, isDropped;    
     public bool isFirstWS;
 
     void Start()
     {   
-        if(!isFirstWS && isCollectable) Player.instance.weaponSelectors.Add(gameObject);
 
         Player.instance.weaponChoosingInitYearsLimit = weaponChoosingInitYearsLimit;
-        WeaponSelecting();
 
         if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         else Player.instance.SetWeaponsInitYearTextState(false);
@@ -41,7 +39,21 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         }
 
     }
+    private void OnCollisionEnter(Collision other) 
+    {
+        if(other.gameObject.CompareTag("SmallingObstacle") && !isDropped && !isFirstWS && !isCollectable)    
+        {
+            DropWeapon();
+            Debug.Log("collisionon ");
+        }
+    }
 
+    private void DropWeapon()
+    {
+        transform.parent = null;
+        isDropped = true;
+        Player.instance.weaponSelectors.Remove(gameObject);
+    }
     public void WeaponSelecting()
     {
         
@@ -174,25 +186,23 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     //SETTERS
     public void IncrementInGameFireRange(float value)
     {
-        float effectiveValue = value / 500;
+        float effectiveValue = value / 5000;
         inGameFireRange +=  effectiveValue;
     }
     public void IncrementInGameFireRate(float value)
     {
-        float effectiveValue = value / 500;
-        Debug.Log(effectiveValue);
+        float effectiveValue = value / 5000;
         inGameFireRate -= effectiveValue;
     }
     public void IncrementInGameInitYear(int value)
     {
-        if(value == -1) 
-        {
-            Debug.Log("display");
-            UIManager.instance.DisplayInitYearReduce();
-        }
         inGameInitYear += value;
         
-        if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
+        if(GameManager.instance.upgradePhase)
+        { 
+            Player.instance.SetWeaponsInitYearTextState(true);
+        }
+        Debug.Log(inGameInitYear);
         WeaponSelecting();
         
     }

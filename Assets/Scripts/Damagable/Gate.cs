@@ -47,7 +47,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
     {
         if(!yearGate)
         {
-           int rand = Random.Range(1,3);
+            int rand = Random.Range(1,3);
             damage = rand;
             damageText.text = damage.ToString(); 
         }
@@ -69,7 +69,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
 
     private void ChooseOperation()
     {
-        int chooseRand = Random.Range(0,2);
+        int chooseRand = Random.Range(0,3);
         float valueRand = Random.Range(negativeValue,positiveValue);
         float halfValueRand = RoundToClosestHalf(valueRand);
         gateValue = halfValueRand;
@@ -91,7 +91,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
             yearGate = true;
             gateOperatorText.text = "Init Year";
             valueRand = Random.Range(inityearValueMin,inityearValueMax);
-            gateValue = valueRand;
+            gateValue = Mathf.RoundToInt(valueRand);
         }
 
         if(gateValue >= 0)
@@ -134,7 +134,6 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
     {
         gateValue += damage;
         GateHitEffect();
-        UpdateGateText();
         if(yearGate)
         {
             gateValue = Mathf.Clamp(gateValue,-100,50);
@@ -148,6 +147,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
         {
             UpdateTheColorOfGate(redPrimaryMaterial,redSecondaryMat);
         }
+        UpdateGateText();
     }
 
     public void Interact()
@@ -162,10 +162,11 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
             {
                 Player.instance.IncrementWeaponSelectorsFireRange(gateValue);
             }
-            else if(fireRangeGate)
+            else if(yearGate)
             {
                 Player.instance.IncrementWeaponSelectorsInitYear(Mathf.RoundToInt(gateValue));
             }
+
             gameObject.SetActive(false);
         }
     }

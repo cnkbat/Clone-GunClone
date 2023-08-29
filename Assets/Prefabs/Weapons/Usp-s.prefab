@@ -585,7 +585,7 @@ MonoBehaviour:
   doubleShotActive: 0
   fireEndRotationValue: {x: 315, y: 0, z: 0}
   originalRotationValue: {x: 0, y: 0, z: 0}
-  fireRange: 4
+  fireRange: 6
   fireRate: 0.45
   damage: 0.65
   ownerSelector: {fileID: 0}

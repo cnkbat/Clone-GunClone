@@ -228,8 +228,11 @@ public class Player : MonoBehaviour
             spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(fireRate);
             spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(initYear);
             spawnedWS.GetComponent<WeaponSelector>().isCollectable = false;
+            spawnedWS.GetComponent<WeaponSelector>().isFirstWS =false;
+
             spawnedWS.GetComponent<Rigidbody>().useGravity = true;
             spawnedWS.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
             spawnedWS.gameObject.layer = LayerMask.NameToLayer("Player");
             //spawnedWS.GetComponent<WeaponSelector>().SetStartingValues();  
 
@@ -237,18 +240,21 @@ public class Player : MonoBehaviour
             spawnedWS.transform.parent = transform;
             WSPositiveList.Add(spawnedWS);
             positiveTurn = false;
-            negativeTurn = true;
-            
+
+            weaponSelectors.Add(spawnedWS);
         }
-        else if(negativeTurn)
+        else
         {
             GameObject spawnedWS = Instantiate(objectToSpawn,weaponSelectorsTransformNegative[WSNegativeList.Count].position,Quaternion.identity);
             spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(fireRange);
             spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(fireRate);
             spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(initYear);
             spawnedWS.GetComponent<WeaponSelector>().isCollectable = false;
+            spawnedWS.GetComponent<WeaponSelector>().isFirstWS =false;
+
             spawnedWS.GetComponent<Rigidbody>().useGravity = true;
             spawnedWS.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
             spawnedWS.gameObject.layer = LayerMask.NameToLayer("Player");
          //   spawnedWS.GetComponent<WeaponSelector>().SetStartingValues();   
 
@@ -256,7 +262,8 @@ public class Player : MonoBehaviour
             spawnedWS.transform.parent = transform;
             WSNegativeList.Add(spawnedWS);
             positiveTurn = true;
-            negativeTurn = false;
+            weaponSelectors.Add(spawnedWS);
+
         }
         
     }
@@ -287,6 +294,7 @@ public class Player : MonoBehaviour
 
             weaponSelectors[0].
                 GetComponent<WeaponSelector>().SetStartingValues();   
+            weaponSelectors[0].GetComponent<WeaponSelector>(). WeaponSelecting();
     }
 
     public void IncrementWeaponSelectorsInitYear(int value)
@@ -317,6 +325,6 @@ public class Player : MonoBehaviour
     public void IncrementMoney(int value)
     {
         money += Mathf.RoundToInt(value * income);
-      //  UIManager.instance.UpdateMoneyText();
+        UIManager.instance.UpdateMoneyText();
     }
 }

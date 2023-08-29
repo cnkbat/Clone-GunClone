@@ -53,6 +53,7 @@ public class Weapon : MonoBehaviour
         if(GameManager.instance.gameHasEnded) return;
         if(GameManager.instance.upgradePhase) return;
         if(transform.parent.GetComponent<WeaponSelector>().isCollectable) return;
+        if(transform.parent.GetComponent<WeaponSelector>().isDropped) return;
         
         if(Player.instance.knockbacked)
         {
@@ -110,6 +111,5 @@ public class Weapon : MonoBehaviour
     {
         initYearImage.SetActive(boolean);
         initYearText.text = ownerSelector.GetComponent<WeaponSelector>().GetInGameInitYear().ToString();
-        Debug.Log("update init year text");
     }
 }

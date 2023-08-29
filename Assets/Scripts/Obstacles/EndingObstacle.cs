@@ -14,6 +14,8 @@ public class EndingObstacle : MonoBehaviour , IDamagable, IInteractable
     [SerializeField] Vector3 hitEffectScale;
     [SerializeField] float hitEffectDur;
     private Vector3 originalScale;
+    bool isDestroyed = false;
+
     private void Start() 
     {
         originalScale = healthText.transform.localScale;
@@ -47,6 +49,8 @@ public class EndingObstacle : MonoBehaviour , IDamagable, IInteractable
         ObstacleHitEffect();
         if(health <= 0)
         {
+            if(isDestroyed) return;
+            isDestroyed = true;
             GameObject spawnedMoney = Instantiate(money,moneySpawnTransform.position,Quaternion.identity);
             spawnedMoney.GetComponent<Money>().value = moneysValue;
             Destroy(gameObject);

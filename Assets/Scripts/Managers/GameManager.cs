@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Testing")]
     [SerializeField] GameObject testObject;
+    [SerializeField] float fireRange,fireRate;
+    [SerializeField] int initYear;
     
     [Header("Obstacle")]
     public float obstaclePushValue;
@@ -88,7 +90,7 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))    
         {
-           Player.instance.KnockbackPlayer();
+           Player.instance.SpawnWeaponSelector(testObject,fireRange,fireRate,initYear);
         }
     }
     public void LevelChooser()

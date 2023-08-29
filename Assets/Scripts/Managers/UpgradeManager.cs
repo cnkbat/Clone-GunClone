@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,13 @@ public class UpgradeManager : MonoBehaviour
         }   
         initYearValues.Clear();
         costs.Clear();
+        fireRangeValues.Clear();
+        fireRateValues.Clear();
+        incomeValues.Clear();
 
+        SetIncomeValues();
+        SetFireRangeValues();
+        SetFireRateValues();
         SetInitYearValues();
         SetCostValues();
     }
@@ -37,10 +44,45 @@ public class UpgradeManager : MonoBehaviour
             initYearValues.Add(valueNext);
         }
     }
-    /*public void SetFireRangeValues()
+    public void SetFireRangeValues()
     {
-        fireRangeValues[0] = 
-    } */
+        float firstValue = 12;
+        fireRangeValues.Add(firstValue);
+
+        for (int i = 1; i < 1000; i++)
+        {
+            float nextValue = fireRangeValues[i - 1] + 0.5f;
+            fireRangeValues.Add(nextValue);
+        }
+    } 
+    public void SetIncomeValues()
+    {
+        float firstValue = 1.25f;
+        incomeValues.Add(firstValue);
+
+        for (int i = 1; i < 1000; i++)
+        {
+            float nextValue = incomeValues[i - 1] + 0.05f;
+            nextValue = Mathf.Round(nextValue);
+            incomeValues.Add(nextValue);
+        }
+    }
+    public void SetFireRateValues()
+    {
+        float firstValue = 0.75f;
+        fireRateValues.Add(firstValue);
+
+        for (int i = 1; i < 5; i++)
+        {
+            float nextValue = fireRateValues[i - 1] - 0.03f;
+            fireRateValues.Add(nextValue);
+        }
+        for (int i = 5; i < 1000; i++)
+        {
+            float nextValue = fireRateValues[i -1] - 0.01f;
+            fireRateValues.Add(nextValue);
+        }
+    } 
     public void SetCostValues()
     {
         int firstValue = 50;

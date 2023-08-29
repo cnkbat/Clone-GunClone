@@ -21,8 +21,8 @@ public class Obstacle : MonoBehaviour , IDamagable, IInteractable
         currentHealth = maxHealth;
         if(transform.parent.GetComponent<UpgradeCard>())
         {
-            transform.parent.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
-            transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
+            transform.parent.gameObject.layer = LayerMask.NameToLayer("ObstacledCard");
+            transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("ObstacledCard");
         }
 
         fillImage.fillAmount = (float)currentHealth/ (float)maxHealth;
@@ -34,7 +34,7 @@ public class Obstacle : MonoBehaviour , IDamagable, IInteractable
         Player.instance.KnockbackPlayer();
         if(transform.parent.GetComponent<UpgradeCard>())
         {
-            transform.parent.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
+            transform.parent.gameObject.layer = LayerMask.NameToLayer("ObstacledCard");
             transform.parent.GetComponentInChildren<CollideWithPlayer>().gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
         }
         transform.gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");

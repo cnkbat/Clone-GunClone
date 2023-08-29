@@ -17,6 +17,7 @@ TagManager:
   - UpgradeCardMovingLeft
   - LeftPlatform
   - UpgradeCard
+  - SmallingObstacle
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - OnlyPlayer
   - Bullet
   - Platform
-  - 
-  - 
+  - GunStand
+  - ObstacledCard
   - 
   - 
   - 

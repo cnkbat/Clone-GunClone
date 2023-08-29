@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
     public void UpdateStartingHudTexts()
     {
         currentLevelText.text = "LEVEL " + (Player.instance.currentLevelIndex + 1).ToString();
-      //  UpdateInitYearText();
+        
         UpdateMoneyText();
 
         fireRateLevelText.text = "LEVEL " + (Player.instance.fireRateValueIndex + 1).ToString();
