@@ -63,7 +63,7 @@ public class UpgradeManager : MonoBehaviour
         for (int i = 1; i < 1000; i++)
         {
             float nextValue = incomeValues[i - 1] + 0.05f;
-            nextValue = Mathf.Round(nextValue);
+            nextValue = Mathf.Round(nextValue * 100f) / 100f;
             incomeValues.Add(nextValue);
         }
     }
@@ -75,11 +75,14 @@ public class UpgradeManager : MonoBehaviour
         for (int i = 1; i < 5; i++)
         {
             float nextValue = fireRateValues[i - 1] - 0.03f;
+            nextValue = Mathf.Round(nextValue * 100f) / 100f;
             fireRateValues.Add(nextValue);
         }
         for (int i = 5; i < 1000; i++)
         {
             float nextValue = fireRateValues[i -1] - 0.01f;
+            nextValue = Mathf.Round(nextValue * 100f) / 100f;
+            nextValue = Mathf.Clamp(nextValue,0.04f,5f);
             fireRateValues.Add(nextValue);
         }
     } 

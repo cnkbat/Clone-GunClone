@@ -25,13 +25,7 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     {   
 
         Player.instance.weaponChoosingInitYearsLimit = weaponChoosingInitYearsLimit;
-
-        if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
-        else Player.instance.SetWeaponsInitYearTextState(false);
         
-        if(!GameManager.instance.gameHasStarted) Player.instance.SetWeaponsInitYearTextState(true);
-        else Player.instance.SetWeaponsInitYearTextState(false);
-
         if(isCollectable) 
         {
             SetStartingValues();
@@ -44,7 +38,6 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         if(other.gameObject.CompareTag("SmallingObstacle") && !isDropped && !isFirstWS && !isCollectable)    
         {
             DropWeapon();
-            Debug.Log("collisionon ");
         }
     }
 
@@ -186,12 +179,12 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     //SETTERS
     public void IncrementInGameFireRange(float value)
     {
-        float effectiveValue = value / 5000;
+        float effectiveValue = value / 2500;
         inGameFireRange +=  effectiveValue;
     }
     public void IncrementInGameFireRate(float value)
     {
-        float effectiveValue = value / 5000;
+        float effectiveValue = value / 2500;
         inGameFireRate -= effectiveValue;
     }
     public void IncrementInGameInitYear(int value)

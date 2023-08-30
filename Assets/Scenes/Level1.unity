@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c25b536c911ef4b4ab76ce8e80b1778c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: da83f09ae4f914a4cb0f9550eb58f7a9, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -14710,14 +14710,14 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.15
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -16020,7 +16020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.19705226, y: 0.000000032666705, z: -0.000000006565783, w: 0.980393}
+  m_LocalRotation: {x: 0.19705226, y: -0.000000032666705, z: 0.000000006565783, w: 0.980393}
   m_LocalPosition: {x: 0, y: 6.87, z: -7.8200035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17079,7 +17079,7 @@ MonoBehaviour:
   forwardMoveSpeed: 5
   negativeLimitValue: 3.99
   positiveLimitValue: 4
-  maxSwerveAmountPerFrame: 2.3
+  maxSwerveAmountPerFrame: 1.8
   knockbacked: 0
   knockbackValue: 10
   knockbackDur: 0.4
@@ -17092,7 +17092,7 @@ MonoBehaviour:
   fireRange: 0
   weaponSelectors:
   - {fileID: 1675120476}
-  weaponChoosingInitYearsLimit: a4060000d6060000080700003a0700006c0700009e070000d007000002080000
+  weaponChoosingInitYearsLimit: d6060000080700003a0700006c0700009e070000d00700000208000034080000
   fireRateValueIndex: 0
   fireRangeValueIndex: 0
   initYearValueIndex: 0
@@ -18706,7 +18706,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335636393}
-  m_LocalRotation: {x: 0.19705226, y: 0.000000032666705, z: -0.000000006565783, w: 0.980393}
+  m_LocalRotation: {x: 0.19705226, y: -0.000000032666705, z: 0.000000006565783, w: 0.980393}
   m_LocalPosition: {x: 0, y: 6.87, z: -7.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24247,6 +24247,10 @@ PrefabInstance:
       propertyPath: fireRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4293862903041927593, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5257370011085095600, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
       propertyPath: fireRate
       value: 0.1
@@ -24322,6 +24326,38 @@ PrefabInstance:
     - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
       propertyPath: isFirstWS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[0]
+      value: 1750
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[1]
+      value: 1800
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[2]
+      value: 1850
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[3]
+      value: 1900
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[4]
+      value: 1950
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[5]
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[6]
+      value: 2050
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596966551545706395, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
+      propertyPath: weaponChoosingInitYearsLimit.Array.data[7]
+      value: 2100
       objectReference: {fileID: 0}
     - target: {fileID: 8322340942089291570, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
       propertyPath: fireRange

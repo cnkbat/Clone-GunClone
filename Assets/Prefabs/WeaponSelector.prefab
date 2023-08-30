@@ -63,10 +63,11 @@ MonoBehaviour:
   - {fileID: 7326425332570519484}
   - {fileID: 7326425331099739742}
   - {fileID: 7326425332470641823}
-  weaponChoosingInitYearsLimit: a4060000d6060000080700003a0700006c0700009e070000d007000002080000
+  weaponChoosingInitYearsLimit: d6060000080700003a0700006c0700009e070000d00700000208000034080000
   currentWeapon: {fileID: 0}
   weaponIndex: 0
   isCollectable: 0
+  isDropped: 0
   isFirstWS: 0
 --- !u!54 &7596966551545706405
 Rigidbody:

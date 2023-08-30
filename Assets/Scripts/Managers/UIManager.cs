@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
 
         float fillValue = (float) Player.instance.initYear -
            (float) Player.instance.weaponChoosingInitYearsLimit
-           [Player.instance.weaponSelectors[0].GetComponent<WeaponSelector>().weaponIndex + 1];
+           [Player.instance.weaponSelectors[0].GetComponent<WeaponSelector>().weaponIndex];
 
         weaponBar.fillAmount = (fillValue + 50) / (float)50;
     }

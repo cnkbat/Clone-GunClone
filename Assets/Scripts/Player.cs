@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
 
         originalMoveSpeed = forwardMoveSpeed;
         SetWSTransformsPos();
+        SetWeaponsInitYearTextState(true);
     }
 
     void Update() 
@@ -266,6 +267,15 @@ public class Player : MonoBehaviour
 
         }
         
+        if(GameManager.instance.upgradePhase)
+        {
+            SetWeaponsInitYearTextState(true);
+        } 
+        else
+        {
+            SetWeaponsInitYearTextState(false);
+        }
+
     }
     
     public void SetWeaponsInitYearTextState(bool boolean)
