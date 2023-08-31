@@ -92,6 +92,10 @@ public class GameManager : MonoBehaviour
         {
            Player.instance.SpawnWeaponSelector(testObject,fireRange,fireRate,initYear);
         }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            Player.instance.SavePlayerData();
+        }
     }
     public void LevelChooser()
     {
