@@ -16,7 +16,8 @@ public class UpgradeManager : MonoBehaviour
     
     [Header("Fire Rate")]
     public List<float> fireRateValues;
-    [SerializeField] float  fireRateChangeLevelIndex, fireRateStartValue, fireRateIncreasingValue, secondFireRateIncreasingValue;
+    [SerializeField] float fireRateStartValue, fireRateIncreasingValue, secondFireRateIncreasingValue;
+    [SerializeField] int fireRateChangeLevelIndex;
 
     [Header("Fire Range")]
     public List<float> fireRangeValues;
@@ -46,52 +47,52 @@ public class UpgradeManager : MonoBehaviour
     }
     public void SetInitYearValues()
     {
-        int firstValue = 1700;
+        int firstValue = initYearStartValue;
         initYearValues.Add(firstValue);
 
         for(int i = 1; i < 1000 ; i++)
         {
-            int valueNext = initYearValues[i - 1] + 5;
+            int valueNext = initYearValues[i - 1] + initYearIncreasingValue;
             initYearValues.Add(valueNext);
         }
     }
     public void SetFireRangeValues()
     {
-        float firstValue = 12;
+        float firstValue = fireRangeStartValue;
         fireRangeValues.Add(firstValue);
 
         for (int i = 1; i < 1000; i++)
         {
-            float nextValue = fireRangeValues[i - 1] + 0.5f;
+            float nextValue = fireRangeValues[i - 1] + fireRangeIncreasingValue;
             fireRangeValues.Add(nextValue);
         }
     } 
     public void SetIncomeValues()
     {
-        float firstValue = 1.25f;
+        float firstValue = incomeStartValue;
         incomeValues.Add(firstValue);
 
         for (int i = 1; i < 1000; i++)
         {
-            float nextValue = incomeValues[i - 1] + 0.05f;
+            float nextValue = incomeValues[i - 1] + incomeIncreasingValue;
             nextValue = Mathf.Round(nextValue * 100f) / 100f;
             incomeValues.Add(nextValue);
         }
     }
     public void SetFireRateValues()
     {
-        float firstValue = 0.75f;
+        float firstValue = fireRateStartValue;
         fireRateValues.Add(firstValue);
 
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i < fireRateChangeLevelIndex; i++)
         {
-            float nextValue = fireRateValues[i - 1] - 0.03f;
+            float nextValue = fireRateValues[i - 1] - fireRateIncreasingValue;
             nextValue = Mathf.Round(nextValue * 100f) / 100f;
             fireRateValues.Add(nextValue);
         }
-        for (int i = 5; i < 1000; i++)
+        for (int i = fireRateChangeLevelIndex; i < 1000; i++)
         {
-            float nextValue = fireRateValues[i -1] - 0.01f;
+            float nextValue = fireRateValues[i -1] - secondFireRateIncreasingValue;
             nextValue = Mathf.Round(nextValue * 100f) / 100f;
             nextValue = Mathf.Clamp(nextValue,0.04f,5f);
             fireRateValues.Add(nextValue);
@@ -99,11 +100,11 @@ public class UpgradeManager : MonoBehaviour
     } 
     public void SetCostValues()
     {
-        int firstValue = 50;
+        int firstValue = costStartingValue;
         costs.Add(firstValue);
         for (int i = 1; i < 1000; i++)
         {
-            int nextValue = costs[i - 1] + 50;
+            int nextValue = costs[i - 1] + costIncreasingValue;
             costs.Add(nextValue);
         }
     }
