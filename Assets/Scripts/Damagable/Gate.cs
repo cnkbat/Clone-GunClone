@@ -71,8 +71,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
     {
         int chooseRand = Random.Range(0,3);
         float valueRand = Random.Range(negativeValue,positiveValue);
-        float halfValueRand = RoundToClosestHalf(valueRand);
-        gateValue = halfValueRand;
+        gateValue = valueRand;
 
 
         // textleri de ona göre yazıcaz
@@ -113,11 +112,6 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
     private void UpdateGateText()
     {
         gateValueText.text = gateValue.ToString();
-    }
-    public float RoundToClosestHalf(float number)
-    {
-        float roundedValue = Mathf.Round(number * 2) / 2;
-        return roundedValue;
     }
 
     private void GateHitEffect()
