@@ -7,13 +7,24 @@ public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager instance {get; private set;}
 
+    [Header("Income")]
+     public List<float> incomeValues;
+    [SerializeField] float incomeStartValue, incomeIncreasingValue;
+    [Header("InitYear")]
     public List<int> initYearValues;
-    public List<float> incomeValues;
-
-    public List<float> fireRateValues;
-    public List<float> fireRangeValues;
+    [SerializeField] int initYearStartValue, initYearIncreasingValue;
     
+    [Header("Fire Rate")]
+    public List<float> fireRateValues;
+    [SerializeField] float  fireRateChangeLevelIndex, fireRateStartValue, fireRateIncreasingValue, secondFireRateIncreasingValue;
+
+    [Header("Fire Range")]
+    public List<float> fireRangeValues;
+    [SerializeField] float fireRangeStartValue, fireRangeIncreasingValue;
+
+    [Header("Cost")]
     public List<int> costs;
+    [SerializeField] int costStartingValue, costIncreasingValue;
 
     private void Awake() 
     {

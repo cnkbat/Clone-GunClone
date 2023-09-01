@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SmallingObstacles : MonoBehaviour,IDamagable
+public class SmallingObstacles : MonoBehaviour,IDamagable,IInteractable
 {
     [Header("Hexagon")]
     [SerializeField] GameObject hexagon;
@@ -68,5 +68,10 @@ public class SmallingObstacles : MonoBehaviour,IDamagable
     private void UpdateHealthText()
     {
         healthText.text = Mathf.RoundToInt(currentHealth).ToString();
+    }
+
+    public void Interact()
+    {
+        Player.instance.KnockbackPlayer();
     }
 }

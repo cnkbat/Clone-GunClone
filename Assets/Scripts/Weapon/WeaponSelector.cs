@@ -179,12 +179,12 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     //SETTERS
     public void IncrementInGameFireRange(float value)
     {
-        float effectiveValue = value / 2500;
+        float effectiveValue = value / 1000;
         inGameFireRange +=  effectiveValue;
     }
     public void IncrementInGameFireRate(float value)
     {
-        float effectiveValue = value / 2500;
+        float effectiveValue = value / 1000;
         inGameFireRate -= effectiveValue;
     }
     public void IncrementInGameInitYear(int value)

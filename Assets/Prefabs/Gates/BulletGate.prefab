@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dc6d3b8c88f2749a2a0345bec3b624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBulletCounter: 25
+  maxBulletCounter: 12
   fillImage: {fileID: 1415620821747334978}
 --- !u!65 &3469287838025181073
 BoxCollider:

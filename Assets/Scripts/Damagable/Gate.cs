@@ -53,7 +53,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
         }
         else if(yearGate)
         {
-            int rand = Random.Range(10,25);
+            int rand = Random.Range(2,4);
             damage = rand;
             damageText.text = damage.ToString();
             gateValue = Mathf.Clamp(gateValue,-50,50);
