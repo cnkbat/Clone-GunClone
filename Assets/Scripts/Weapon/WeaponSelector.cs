@@ -33,7 +33,7 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         }
 
     }
-    private void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.CompareTag("SmallingObstacle") && !isDropped && !isFirstWS && !isCollectable)    
         {
@@ -179,12 +179,12 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     //SETTERS
     public void IncrementInGameFireRange(float value)
     {
-        float effectiveValue = value / 1000;
+        float effectiveValue = value / 800;
         inGameFireRange +=  effectiveValue;
     }
     public void IncrementInGameFireRate(float value)
     {
-        float effectiveValue = value / 1000;
+        float effectiveValue = value / 800;
         inGameFireRate -= effectiveValue;
     }
     
