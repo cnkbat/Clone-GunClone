@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Materials")]
     public Material originalMaterial;
+    
     private void Start() 
     {   
         tag = "Weapon";

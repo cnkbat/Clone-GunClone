@@ -111,7 +111,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
   
     private void UpdateGateText()
     {
-        gateValueText.text = gateValue.ToString();
+        gateValueText.text =  Mathf.RoundToInt(gateValue).ToString();
     }
 
     private void GateHitEffect()

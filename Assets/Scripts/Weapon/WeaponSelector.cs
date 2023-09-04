@@ -45,6 +45,8 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     {
         transform.parent = null;
         isDropped = true;
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<Rigidbody>().useGravity = true;
         Player.instance.weaponSelectors.Remove(gameObject);
     }
     public void WeaponSelecting()

@@ -73,5 +73,6 @@ public class SmallingObstacles : MonoBehaviour,IDamagable,IInteractable
     public void Interact()
     {
         Player.instance.KnockbackPlayer();
+        gameObject.layer = LayerMask.NameToLayer("CantCollidePlayer");
     }
 }

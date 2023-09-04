@@ -334,7 +334,7 @@ public class Player : MonoBehaviour
 
     public void IncrementMoney(int value)
     {
-        money += Mathf.RoundToInt(value * income);
+        money += Mathf.RoundToInt(value + income);
         UIManager.instance.UpdateMoneyText();
     }
 }
