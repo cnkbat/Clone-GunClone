@@ -220,14 +220,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SpawnWeaponSelector(GameObject objectToSpawn, float fireRange , float fireRate, int initYear)
+    public void SpawnWeaponSelector(GameObject objectToSpawn, float newfireRange , float newfireRate, int newinitYear)
     {
         if(positiveTurn)
         {
             GameObject spawnedWS = Instantiate(objectToSpawn,weaponSelectorsTransformPositive[WSPositiveList.Count].position,Quaternion.identity);
-            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(fireRange);
-            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(fireRate);
-            spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(initYear);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(newfireRange);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(newfireRate);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(newinitYear);
             spawnedWS.GetComponent<WeaponSelector>().isCollectable = false;
             spawnedWS.GetComponent<WeaponSelector>().isFirstWS =false;
 
@@ -247,9 +247,9 @@ public class Player : MonoBehaviour
         else
         {
             GameObject spawnedWS = Instantiate(objectToSpawn,weaponSelectorsTransformNegative[WSNegativeList.Count].position,Quaternion.identity);
-            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(fireRange);
-            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(fireRate);
-            spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(initYear);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRange(newfireRange);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameFireRate(newfireRate);
+            spawnedWS.GetComponent<WeaponSelector>().SetInGameInitYear(newinitYear);
             spawnedWS.GetComponent<WeaponSelector>().isCollectable = false;
             spawnedWS.GetComponent<WeaponSelector>().isFirstWS =false;
 

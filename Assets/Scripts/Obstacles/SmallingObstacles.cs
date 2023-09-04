@@ -58,7 +58,10 @@ public class SmallingObstacles : MonoBehaviour,IDamagable,IInteractable
             }
             else if(gunHexagon)
             {
+                weaponSelector.GetComponent<Rigidbody>().useGravity = true;
+                weaponSelector.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
                 weaponSelector.transform.parent = null;
+                
                 weaponSelector.gameObject.layer = LayerMask.NameToLayer("GunStand");
                 Destroy(gameObject);
             }

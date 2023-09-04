@@ -28,10 +28,19 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         
         if(isCollectable) 
         {
-            SetStartingValues();
+
+            StartCoroutine(SetValuesForCollectable());
             return;
         }
 
+    }
+
+    private IEnumerator SetValuesForCollectable()
+    {
+        yield return new WaitForFixedUpdate();
+
+        SetStartingValues();
+        Debug.Log(inGameFireRate);
     }
     private void OnTriggerEnter(Collider other) 
     {
@@ -148,6 +157,7 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         inGameFireRange = Player.instance.fireRange;
         inGameFireRate = Player.instance.fireRate;
         inGameInitYear = Player.instance.initYear;
+        WeaponSelecting();
     }
 
     public int GetInGameInitYear()
