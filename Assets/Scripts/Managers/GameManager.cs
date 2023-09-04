@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
     // buttona basıldığında gerçekleşecek
     public void LoadNextScene()
     {
-        Player.instance.currentLevelIndex ++;
         Player.instance.SavePlayerData();
         SceneManager.LoadScene(0);
     }
