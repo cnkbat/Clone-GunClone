@@ -70,7 +70,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         UpdateGateText();
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float dmg)
     {
         currentValue +=1;
        // GateHitEffect();

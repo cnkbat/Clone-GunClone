@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
     private void Start() 
     {   
         tag = "Weapon";
+        damage = damage + Player.instance.playerDamage;
         if(transform.parent.tag == "WeaponSelector")
         {
             ownerSelector = transform.parent.gameObject;

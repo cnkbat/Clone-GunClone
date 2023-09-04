@@ -20,7 +20,7 @@ public class BulletGate : MonoBehaviour, IDamagable,IInteractable
         fillImage.fillAmount =  (float)bulletCounter/ (float)maxBulletCounter;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
         bulletCounter++;
         bulletCounter = Mathf.Clamp(bulletCounter,0,maxBulletCounter);

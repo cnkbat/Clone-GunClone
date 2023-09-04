@@ -49,9 +49,9 @@ public class Obstacle : MonoBehaviour , IDamagable, IInteractable
         CheckValues(healthPercentages[4],parts[4]);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
-        currentHealth -= Player.instance.playerDamage;
+        currentHealth -=damage;
         HitEffect();
 
         healthBar.SetActive(true);

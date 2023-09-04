@@ -36,9 +36,9 @@ public class Stickman : MonoBehaviour , IInteractable, IDamagable
         Player.instance.KnockbackPlayer();
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float dmg)
     {
-        currentHealth -= Player.instance.playerDamage;
+        currentHealth -= dmg;
         UpdateHealthText();
         ObstacleHitEffect();
         

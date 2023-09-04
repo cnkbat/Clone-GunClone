@@ -78,7 +78,7 @@ public class Bullet : MonoBehaviour
     {
         if(other.TryGetComponent(out IDamagable damagable))
         {
-            damagable.TakeDamage();
+            damagable.TakeDamage(relatedWeapon.GetComponent<Weapon>().damage);
             PlayHitFX();
             Destroy(gameObject);
         }

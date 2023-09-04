@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     //----------------
 
     [Header("Player Attributes")]
-    public float playerDamage;
     public int playerKnockbackValue;
 
     [Header("Visual")]
@@ -81,7 +80,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        UpdatePlayerDamage();
         LevelChooser();
         Player.instance.SetWeaponsInitYearTextState(true);
     }
@@ -148,9 +146,5 @@ public class GameManager : MonoBehaviour
         Player.instance.currentLevelIndex ++;
         Player.instance.SavePlayerData();
         SceneManager.LoadScene(0);
-    }
-    public void UpdatePlayerDamage()
-    {
-        playerDamage = Player.instance.playerDamage;
     }
 }

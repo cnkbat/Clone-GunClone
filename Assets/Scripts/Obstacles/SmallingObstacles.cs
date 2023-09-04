@@ -41,9 +41,9 @@ public class SmallingObstacles : MonoBehaviour,IDamagable,IInteractable
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float dmg)
     {
-        currentHealth -= 1;
+        currentHealth -= dmg;
         hexagon.transform.localScale = new Vector3(hexagon.transform.localScale.x, hexagon.transform.localScale.y, 
             hexagon.transform.localScale.z - smallingValue);
         UpdateHealthText();

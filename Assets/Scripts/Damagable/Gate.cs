@@ -124,7 +124,7 @@ public class Gate : MonoBehaviour , IDamagable , IInteractable
         transform.DOScale(originalScale,hitEffectDur);
     }
 
-    void IDamagable.TakeDamage()
+    void IDamagable.TakeDamage(float dmg)
     {
         gateValue += damage;
         GateHitEffect();
