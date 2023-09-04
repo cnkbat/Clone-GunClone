@@ -187,7 +187,9 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     public void IncrementInGameFireRate(float value)
     {
         float effectiveValue = value / 800;
+        Debug.Log(inGameFireRate);
         inGameFireRate -= effectiveValue;
+        inGameFireRate = Mathf.Clamp(inGameFireRate,0.1f,2f);
     }
     
     public void IncrementInGameInitYear(int value)
