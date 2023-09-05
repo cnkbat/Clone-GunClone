@@ -62,7 +62,6 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
         }
         else if(thirdLevel)
         {
-            Debug.Log("thirdlevel");
             maxfillingValue = thirdLevelMaxValue;
             givingValue = thirdLevelGivingValue;
         }
@@ -72,7 +71,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
 
     public void TakeDamage(float dmg)
     {
-        currentValue +=1;
+        currentValue = Mathf.RoundToInt(currentValue + dmg);
        // GateHitEffect();
         if(currentValue >= firstLevelMaxValue && !secondLevel && !thirdLevel)
         {

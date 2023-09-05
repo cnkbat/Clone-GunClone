@@ -213,7 +213,6 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         }
         Debug.Log(inGameInitYear);
         WeaponSelecting();
-        
     }
 
     public void ActiveDoubleShot()

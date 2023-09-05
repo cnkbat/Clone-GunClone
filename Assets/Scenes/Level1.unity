@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1700751}
   - component: {fileID: 1700750}
   - component: {fileID: 1700749}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EndingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 70289623}
   - component: {fileID: 70289622}
   - component: {fileID: 70289621}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2345,7 +2345,7 @@ GameObject:
   - component: {fileID: 354687596}
   - component: {fileID: 354687595}
   - component: {fileID: 354687594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MoneyPartclefx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7685,7 +7685,7 @@ GameObject:
   - component: {fileID: 412098319}
   - component: {fileID: 412098318}
   - component: {fileID: 412098317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8820,7 +8820,7 @@ GameObject:
   - component: {fileID: 548135125}
   - component: {fileID: 548135127}
   - component: {fileID: 548135126}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MoneyPartclefx (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16132,7 +16132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.19705223, y: -7.177069e-16, z: -6.0709253e-17, w: 0.980393}
+  m_LocalRotation: {x: 0.19705223, y: 7.177069e-16, z: 6.0709253e-17, w: 0.980393}
   m_LocalPosition: {x: 0, y: 6.87, z: -7.8200035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17216,7 +17216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b412396533de148a9afa4a7726d768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMoveSpeed: 5
+  forwardMoveSpeed: 0
   negativeLimitValue: 3.99
   positiveLimitValue: 4
   maxSwerveAmountPerFrame: 2
@@ -18878,7 +18878,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335636393}
-  m_LocalRotation: {x: 0.19705223, y: -7.177069e-16, z: -6.0709253e-17, w: 0.980393}
+  m_LocalRotation: {x: 0.19705223, y: 7.177069e-16, z: 6.0709253e-17, w: 0.980393}
   m_LocalPosition: {x: 0, y: 6.87, z: -7.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21886,7 +21886,7 @@ MonoBehaviour:
   - 1.45
   - 1.5
   incomeStartValue: 1
-  incomeIncreasingValue: 1.2
+  incomeIncreasingValue: 0.2
   initYearValues: 
   initYearStartValue: 1700
   initYearIncreasingValue: 5
@@ -22181,7 +22181,7 @@ GameObject:
   - component: {fileID: 1790252313}
   - component: {fileID: 1790252312}
   - component: {fileID: 1790252311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EndingPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22499,7 +22499,7 @@ GameObject:
   - component: {fileID: 1859354764}
   - component: {fileID: 1859354763}
   - component: {fileID: 1859354762}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EndingPlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

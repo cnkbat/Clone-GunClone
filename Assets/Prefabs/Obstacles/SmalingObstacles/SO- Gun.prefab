@@ -171,8 +171,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5571939, y: 1.3025879, z: 1.4479328}
-  m_Center: {x: 0.13065022, y: 0.151294, z: -0.22396642}
+  m_Size: {x: 1.7699202, y: 1.3025879, z: 1.4479328}
+  m_Center: {x: -0.01901418, y: 0.151294, z: -0.22396642}
 --- !u!1 &6314003010391297711
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +415,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308748733692136753}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.018597241, y: 0.017786253, z: 0.019999996}
@@ -490,11 +490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7596966551545706405, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7596966551545706405, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
       propertyPath: m_Constraints
-      value: 126
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 7596966551545706405, guid: 62e4552f71a566a48a61f5f022ed9d15, type: 3}
       propertyPath: m_IsKinematic

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 919132149591891720}
   - component: {fileID: 619542868666675340}
   - component: {fileID: 8950358760478234832}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2926378955234532885}
   - component: {fileID: 3632481174795993505}
   - component: {fileID: 4329372739567071545}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Plane.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8077557942139325053}
   - component: {fileID: 2139645190683341289}
   - component: {fileID: 9179573177538895274}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Plane.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 198054003540540880}
   - component: {fileID: 5065560632183062748}
   - component: {fileID: 1622196773425663947}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

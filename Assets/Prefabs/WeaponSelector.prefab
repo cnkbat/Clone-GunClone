@@ -137,6 +137,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6939787704546693385, guid: f78c2d7d4cd352d4db4b1bd6bf7839c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7125251402469887339, guid: f78c2d7d4cd352d4db4b1bd6bf7839c8, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -224,6 +228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7596966551545706392}
     m_Modifications:
+    - target: {fileID: 2246365512883004440, guid: 3672eca99058ddd40ac061f95bbe2a26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5240276790536579659, guid: 3672eca99058ddd40ac061f95bbe2a26, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -350,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 269394363198162417, guid: cd4e3486180f8494fa641843c98c741e, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 504079881167612657, guid: cd4e3486180f8494fa641843c98c741e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3571582367344982370, guid: cd4e3486180f8494fa641843c98c741e, type: 3}
       propertyPath: bullet
@@ -577,6 +589,10 @@ PrefabInstance:
     - target: {fileID: 7964010952622417257, guid: d9312d9dfd4490247b8262d2b5555cc2, type: 3}
       propertyPath: fireEndRotationValue.x
       value: 355
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176043168064395537, guid: d9312d9dfd4490247b8262d2b5555cc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9312d9dfd4490247b8262d2b5555cc2, type: 3}
@@ -1096,6 +1112,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938615290526096083, guid: dc0d1b10f12ba9643953cc8ecdad5b39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699264400023378701, guid: dc0d1b10f12ba9643953cc8ecdad5b39, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6572454479064668199, guid: dc0d1b10f12ba9643953cc8ecdad5b39, type: 3}
