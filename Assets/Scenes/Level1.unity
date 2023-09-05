@@ -7917,7 +7917,7 @@ GameObject:
   - component: {fileID: 417398842}
   - component: {fileID: 417398841}
   - component: {fileID: 417398840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DangerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16132,7 +16132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.19705223, y: 7.177069e-16, z: 6.0709253e-17, w: 0.980393}
+  m_LocalRotation: {x: 0.19705226, y: 0.000000032666705, z: -0.000000006565783, w: 0.980393}
   m_LocalPosition: {x: 0, y: 6.87, z: -7.8200035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17216,10 +17216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b412396533de148a9afa4a7726d768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMoveSpeed: 0
+  forwardMoveSpeed: 5
   negativeLimitValue: 3.99
   positiveLimitValue: 4
-  maxSwerveAmountPerFrame: 2
+  maxSwerveAmountPerFrame: 1
   knockbacked: 0
   knockbackValue: 10
   knockbackDur: 0.4
@@ -18878,7 +18878,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335636393}
-  m_LocalRotation: {x: 0.19705223, y: 7.177069e-16, z: 6.0709253e-17, w: 0.980393}
+  m_LocalRotation: {x: 0.19705226, y: 0.000000032666705, z: -0.000000006565783, w: 0.980393}
   m_LocalPosition: {x: 0, y: 6.87, z: -7.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
