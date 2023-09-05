@@ -191,15 +191,15 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     //SETTERS
     public void IncrementInGameFireRange(float value)
     {
-        float effectiveValue = value / 600;
+        float effectiveValue = value / 1000;
         inGameFireRange +=  effectiveValue;
     }
     public void IncrementInGameFireRate(float value)
     {
-        float effectiveValue = value / 600;
+        float effectiveValue = value / 1300;
         Debug.Log(inGameFireRate);
         inGameFireRate -= effectiveValue;
-        inGameFireRate = Mathf.Clamp(inGameFireRate, 0.000003f, 2f);
+        inGameFireRate = Mathf.Clamp(inGameFireRate, -0.1f, 2f);
         print(inGameFireRate);
     }
     
