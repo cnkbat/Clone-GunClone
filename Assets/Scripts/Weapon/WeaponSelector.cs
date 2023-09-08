@@ -148,6 +148,18 @@ public class WeaponSelector : MonoBehaviour , IInteractable
             currentWeapon.SetActive(true);
             if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
+        if(inGameInitYear > weaponChoosingInitYearsLimit[6] && inGameInitYear <= weaponChoosingInitYearsLimit[7] && currentWeapon != weapons[7])
+        {
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                weapons[i].SetActive(false);
+            }
+
+            currentWeapon = weapons[7];
+            weaponIndex = 7;
+            currentWeapon.SetActive(true);
+            if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
+        }
 
         currentWeapon.transform.parent = transform;
     }
