@@ -17252,6 +17252,8 @@ MonoBehaviour:
   - {fileID: 1675120476}
   positiveTurn: 1
   negativeTurn: 0
+  maxDisplacement: 1.2
+  maxPositionX: 4
 --- !u!65 &1061582174
 BoxCollider:
   m_ObjectHideFlags: 0
