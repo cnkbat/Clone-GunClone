@@ -223,6 +223,11 @@ public class WeaponSelector : MonoBehaviour , IInteractable
         { 
             Player.instance.SetWeaponsInitYearTextState(true);
         }
+        
+        if(!GameManager.instance.gameHasStarted)
+        { 
+            Player.instance.SetWeaponsInitYearTextState(true);
+        }
         Debug.Log(inGameInitYear);
         WeaponSelecting();
     }
