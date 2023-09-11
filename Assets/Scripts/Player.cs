@@ -332,17 +332,20 @@ public class Player : MonoBehaviour
         
         if(GameManager.instance.upgradePhase)
         {
+            Debug.Log("true");
             SetWeaponsInitYearTextState(true);
         } 
         else
         {
+            Debug.Log("false");
             SetWeaponsInitYearTextState(false);
         }
-
+       
     }
     
     public void SetWeaponsInitYearTextState(bool boolean)
     {
+
         for (int i = 0; i < weaponSelectors.Count; i++)
         {
             for (int a = 0; a < weaponSelectors[i].GetComponent<WeaponSelector>().weapons.Count; a++)
@@ -350,6 +353,7 @@ public class Player : MonoBehaviour
                 weaponSelectors[i].GetComponent<WeaponSelector>().weapons[a].GetComponent<Weapon>().UpdateInitYearText(boolean);
             }
         }
+
     }
     
     // Getters And Setters
@@ -397,7 +401,9 @@ public class Player : MonoBehaviour
 
     public void IncrementMoney(int value)
     {
+
         money += Mathf.RoundToInt(value * income);
         UIManager.instance.UpdateMoneyText();
+
     }
 }

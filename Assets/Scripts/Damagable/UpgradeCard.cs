@@ -127,6 +127,7 @@ public class UpgradeCard : MonoBehaviour , IDamagable, IInteractable
     public void UpgradeActionEnd()
     {
         GameManager.instance.collectedCards.Remove(gameObject);
+        
         if(GameManager.instance.collectedCards.Count <= 0)
         {
             GameManager.instance.upgradePhase = false;

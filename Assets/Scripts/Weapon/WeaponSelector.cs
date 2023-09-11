@@ -60,7 +60,7 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     }
     public void WeaponSelecting()
     {
-        
+
         if(inGameInitYear <= weaponChoosingInitYearsLimit[0] && currentWeapon != weapons[0])
         {
             for (int i = 0; i < weapons.Count; i++)
@@ -161,6 +161,11 @@ public class WeaponSelector : MonoBehaviour , IInteractable
             if(GameManager.instance.upgradePhase) Player.instance.SetWeaponsInitYearTextState(true);
         }
 
+        if(GameManager.instance.upgradePhase)
+        {
+            Player.instance.SetWeaponsInitYearTextState(true);
+            Debug.Log("upgrade phase");
+        } 
         currentWeapon.transform.parent = transform;
     }
 
@@ -218,18 +223,19 @@ public class WeaponSelector : MonoBehaviour , IInteractable
     public void IncrementInGameInitYear(int value)
     {
         inGameInitYear += value;
-        
+
+        WeaponSelecting();
+
         if(GameManager.instance.upgradePhase)
         { 
             Player.instance.SetWeaponsInitYearTextState(true);
+            Debug.Log("increment ");
         }
         
         if(!GameManager.instance.gameHasStarted)
         { 
             Player.instance.SetWeaponsInitYearTextState(true);
         }
-        Debug.Log(inGameInitYear);
-        WeaponSelecting();
     }
 
     public void ActiveDoubleShot()
