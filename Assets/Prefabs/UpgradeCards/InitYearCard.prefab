@@ -239,7 +239,7 @@ MonoBehaviour:
   firstLevelGivingValue: 50
   secondLevelGivingValue: 60
   thirdLevelGivingValue: 70
-  firstLevelMaxValue: 8
+  firstLevelMaxValue: 6
   secondLevelMaxValue: 50
   thirdLevelMaxValue: 100
   givingValue: 0

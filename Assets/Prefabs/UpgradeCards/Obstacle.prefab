@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89d58b00957d2b449b83f87c145f813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 5
   fillImage: {fileID: 6902068609235784457}
   healthBar: {fileID: 3236261757453349944}
   parts:
