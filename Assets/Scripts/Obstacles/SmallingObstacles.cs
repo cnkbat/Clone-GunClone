@@ -28,7 +28,7 @@ public class SmallingObstacles : MonoBehaviour,IDamagable,IInteractable
 
     private void Start() 
     {
-        maxHealth = Random.Range(10,30);
+        maxHealth = Random.Range(4,11);
         currentHealth = maxHealth;
         hexagon.transform.localScale = new Vector3(hexagon.transform.localScale.x, hexagon.transform.localScale.y, 
             hexagon.transform.localScale.z + 2 * maxHealth);
