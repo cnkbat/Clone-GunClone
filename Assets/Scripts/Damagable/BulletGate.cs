@@ -10,6 +10,7 @@ public class BulletGate : MonoBehaviour, IDamagable,IInteractable
     int bulletCounter;
     bool isGateActive;
     [SerializeField] Image fillImage;
+    
     public void Interact()
     {
         if(isGateActive)
